@@ -3,6 +3,7 @@ import Classes from '../components/classes/Classes';
 import Header from '../components/header/Header';
 import MainScreen from '../components/mainScreen/MainScreen';
 import Schedule from '../components/schedule/Schedule';
+import Trainers from '../components/trainers/Trainers';
 
 const App = () => {
     return (
@@ -13,6 +14,7 @@ const App = () => {
                     <Route path='/' element={<MainScreen />} />
                     <Route path='/classes' element={<Classes />} />
                     <Route path='/schedule' element={<Schedule />} />
+                    <Route path='/trainers' element={<Trainers />} />
                 </Routes>
             </div>
         </BrowserRouter>

@@ -18,7 +18,7 @@ const Header = () => {
                                 <ul className='site-menu main-menu js-clone-nav mr-auto d-none d-lg-block'>
                                     <li>
                                         <Link to='/' className='nav-link'>
-                                            Home
+                                            Головна
                                         </Link>
                                     </li>
                                     <li>
@@ -26,27 +26,24 @@ const Header = () => {
                                             to='/classes'
                                             className='nav-link'
                                         >
-                                            Classes
+                                            Тренування
                                         </Link>
                                     </li>
                                     <li>
-                                        <Link to='/schedule' className='nav-link'>Schedule</Link>
-                                    </li>
-                                    <li>
-                                        <a
-                                            href='#trainer-section'
+                                        <Link
+                                            to='/schedule'
                                             className='nav-link'
                                         >
-                                            Trainer
-                                        </a>
+                                            Розклад
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a
-                                            href='#services-section'
+                                        <Link
+                                            to='/trainers'
                                             className='nav-link'
                                         >
-                                            Services
-                                        </a>
+                                            Тренери
+                                        </Link>
                                     </li>
                                 </ul>
                             </nav>

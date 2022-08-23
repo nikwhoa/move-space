@@ -6,7 +6,7 @@ const Schedule = () => {
             <div className='container'>
                 <div className='row'>
                     <div className='col-lg-6 mb-5'>
-                        <h2 className='section-title'>Schedule</h2>
+                        <h2 className='section-title'>Розклад</h2>
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipisicing
                             elit. Rem possimus distinctio ex. Natus totam
@@ -34,7 +34,7 @@ const Schedule = () => {
                                     aria-controls='monday'
                                     aria-selected='true'
                                 >
-                                    Monday
+                                    Понеділок
                                 </a>
                             </li>
                             <li className='nav-item'>
@@ -47,7 +47,7 @@ const Schedule = () => {
                                     aria-controls='tuesday'
                                     aria-selected='false'
                                 >
-                                    Tuesday
+                                    Вівторок
                                 </a>
                             </li>
                             <li className='nav-item'>
@@ -60,7 +60,7 @@ const Schedule = () => {
                                     aria-controls='wednesday'
                                     aria-selected='false'
                                 >
-                                    Wednesday
+                                    Середа
                                 </a>
                             </li>
                             <li className='nav-item'>
@@ -73,7 +73,7 @@ const Schedule = () => {
                                     aria-controls='wednesday'
                                     aria-selected='false'
                                 >
-                                    Thursday
+                                    Четвер
                                 </a>
                             </li>
                             <li className='nav-item'>
@@ -86,7 +86,7 @@ const Schedule = () => {
                                     aria-controls='wednesday'
                                     aria-selected='false'
                                 >
-                                    Friday
+                                    Пʼятниця
                                 </a>
                             </li>
                             <li className='nav-item'>
@@ -99,7 +99,20 @@ const Schedule = () => {
                                     aria-controls='wednesday'
                                     aria-selected='false'
                                 >
-                                    Sunday
+                                    Субота
+                                </a>
+                            </li>
+                            <li className='nav-item'>
+                                <a
+                                    className='nav-link'
+                                    id='wednesday-tab'
+                                    data-toggle='tab'
+                                    href='#wednesday'
+                                    role='tab'
+                                    aria-controls='wednesday'
+                                    aria-selected='false'
+                                >
+                                    Неділя
                                 </a>
                             </li>
                         </ul>

@@ -9,7 +9,11 @@
     .container {
         max-width: 720px;
     }
+    .col-md-6 {
 
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
     .site-section {
         padding: 5em 0;
     }
@@ -30,6 +34,17 @@
     .col-lg-3 {
         flex: 0 0 25%;
         max-width: 25%;
+    }
+
+    .mb-lg-0,
+    .my-lg-0 {
+        margin-bottom: 0 !important;
+    }
+
+    .col-lg-4 {
+
+        flex: 0 0 33.33333%;
+        max-width: 33.33333%;
     }
 
     .col-lg-5 {
@@ -56,5 +71,10 @@
 @media (min-width: 1200px) {
     .container {
         max-width: 1140px;
+    }
+}
+@media (min-width: 1300px) {
+    .main-info {
+        margin-top: 10%;
     }
 }

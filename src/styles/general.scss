@@ -108,7 +108,9 @@ section {
 .border {
     border: 1px solid #dee2e6;
 }
-
+.m-t-1 {
+    margin-top: 1.7rem;
+}
 .container {
     width: 100%;
     padding-right: 15px;
@@ -412,4 +414,26 @@ a {
 }
 .text-center {
     text-align: center;
+}
+.large-gutters {
+    margin-right: -35px;
+    margin-left: -35px;
+}
+large-gutters > [class*="col-"] {
+    padding-right: 35px;
+    padding-left: 35px;
+}
+h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
+    color: rgb(188, 187, 185);
+}
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.5rem;
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.2;
+    color: inherit;
+    font-size: 1.75rem;
+}
+.opacity-7 {
+    opacity: .7;
 }

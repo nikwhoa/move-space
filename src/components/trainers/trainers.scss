@@ -1,0 +1,9 @@
+.person img {
+    box-shadow: rgb(31 118 88) 10px 10px 0px 0px;
+}
+.img-square {
+    // width: 100px;
+    // width: 100%;
+    object-fit: cover;
+    height: 400px !important;
+}
