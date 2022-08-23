@@ -1,0 +1,43 @@
+.counter .icon-wrap {
+    margin-right: 1.5rem;
+}
+
+.counter .icon-wrap>span {
+    position: relative;
+    top: -0.2em;
+    font-size: 3rem;
+}
+
+.flaticon-muscle:before {
+    content: "\f100";
+}
+
+[class^="flaticon-"]:before,
+[class*=" flaticon-"]:before,
+[class^="flaticon-"]:after,
+[class*=" flaticon-"]:after {
+    font-family: Flaticon;
+    font-family: "Flaticon";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    line-height: 1;
+    text-decoration: inherit;
+    text-rendering: optimizeLegibility;
+    text-transform: none;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+.counter .counter-text strong {
+    line-height: .5;
+    font-size: 2.5rem;
+    display: block;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+.counter .counter-text span {
+    font-size: 1rem;
+    line-height: 1;
+}

@@ -1,0 +1,13 @@
+.intro-section,
+.intro-section .container .row {
+    height: 100vh;
+}
+
+.intro-section h1 {
+    font-size: 7rem;
+    font-weight: 900;
+    color: #fff;
+    span {
+        font-size: 5rem;
+    }
+}
