@@ -437,3 +437,30 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
 .opacity-7 {
     opacity: .7;
 }
+a:hover {
+    color: #27a86d !important;
+    text-decoration: underline !important;
+    text-underline-offset: 10px !important;
+    text-decoration-color: #fff !important;
+}
+.fade-enter {
+    opacity: 0;
+    transform: translate(0, 25px);
+    z-index: 1;
+}
+.fade-enter.fade-enter-active {
+    opacity: 1;
+    transform: translate(0, 0);
+
+    transition: opacity 250ms ease-out, transform 300ms ease;
+}
+.fade-exit {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+.fade-exit.fade-exit-active {
+    opacity: 0;
+    transform: translate(0, 30px);
+
+    transition: opacity 250ms ease-out, transform 300ms ease;
+}
