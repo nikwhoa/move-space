@@ -8,7 +8,7 @@ const MainScreen = () => {
   return (
     <>
       <video autoPlay={true} muted loop id="main-video">
-        <source src='./video/main-video.mp4' />
+        <source src='/video/main-video.mp4' />
       </video>
       <div className="intro-section" style={{ backgroundColor: "#121212" }}>
         <div className="container" style={{ position: "relative" }}>
