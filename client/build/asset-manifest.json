@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "./static/css/main.8db2a109.css",
+    "main.js": "./static/js/main.f772156e.js",
+    "static/media/main-video.mp4": "./static/media/main-video.819902e892beb4afc331.mp4",
+    "static/media/classes-image.jpg": "./static/media/classes-image.0144f69b03c881fe642e.jpg",
+    "static/media/Kelly-Green.jpg": "./static/media/Kelly-Green.9b8268ad6af722775721.jpg",
+    "static/media/James-Holmes.jpg": "./static/media/James-Holmes.af61a98c4c2364b6cb93.jpg",
+    "static/media/sven-mieke.jpg": "./static/media/sven-mieke.f3c84a353ac9f3afd2a7.jpg",
+    "static/media/slide_4.jpg": "./static/media/slide_4.f97739f79db85bc9d0e8.jpg",
+    "static/media/slide_3.jpg": "./static/media/slide_3.0f9c2b653e1fa4be6040.jpg",
+    "static/media/slide_2.jpg": "./static/media/slide_2.b00af85bcde41dad16d5.jpg",
+    "static/media/slide_1.jpg": "./static/media/slide_1.6e6540f2e02248962ba4.jpg",
+    "static/media/slide_0.jpg": "./static/media/slide_0.07c933a0e55ce3910717.jpg",
+    "index.html": "./index.html",
+    "main.8db2a109.css.map": "./static/css/main.8db2a109.css.map",
+    "main.f772156e.js.map": "./static/js/main.f772156e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8db2a109.css",
+    "static/js/main.f772156e.js"
+  ]
+}
