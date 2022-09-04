@@ -2,7 +2,7 @@ import "./main-screen.scss";
 import image from "./classes-image.jpg";
 // import video from "./main-video.mp4";
 
-import { motion } from "framer-motion";
+
 
 const MainScreen = () => {
   return (
@@ -17,8 +17,8 @@ const MainScreen = () => {
               className="col-lg-8 mx-auto text-center aos-init aos-animate"
               data-aos="fade-up"
             >
-              <h1 style={{ textAlign: "center" }}>
-                <span>Welcome to</span> MOV.space
+              <h1 style={{ textAlign: "center"}}>
+                <span>Welcome to</span> <br /> MOV.SPACE
               </h1>
               <div className="scroll"></div>
             </div>

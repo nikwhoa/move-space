@@ -285,6 +285,11 @@ section {
     color: #212529;
     background-color: #48d494;
     border-color: #48d494;
+    &:hover {
+        color: #212529;
+        background-color: #368a69;
+        border-color: #368a69;
+    }
 }
 
 .image-absolute-box {
@@ -463,4 +468,7 @@ a:hover {
     transform: translate(0, 30px);
 
     transition: opacity 250ms ease-out, transform 300ms ease;
+}
+.Toastify {
+    text-align: center;
 }

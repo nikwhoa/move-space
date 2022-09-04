@@ -2,11 +2,11 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
-
+import authRoute from './routes/auth.js'
 const app = express();
 dotenv.config();
 
-const PORT = process.env.PORT || 5009;
+const PORT = process.env.PORT || 5008;
 const DB_USER = process.env.DB_USER;
 const DB_PASSWORD = process.env.DB_PASSWORD;
 const DB_NAME = process.env.DB_NAME;
@@ -17,6 +17,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.json({ message: "all is gonna be okay" });
 });
+
+app.use('/api/auth', authRoute)
 
 async function start() {
   try {
