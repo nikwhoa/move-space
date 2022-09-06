@@ -444,7 +444,7 @@ h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
 }
 a:hover {
     color: #27a86d !important;
-    text-decoration: underline !important;
+    //text-decoration: underline !important;
     text-underline-offset: 10px !important;
     text-decoration-color: #fff !important;
 }
@@ -471,4 +471,11 @@ a:hover {
 }
 .Toastify {
     text-align: center;
+}
+.cta a span:hover {
+    background-color: #48d494;
+    color: #FFFFFF;
+}
+.nav-link {
+    text-decoration: none !important;
 }
