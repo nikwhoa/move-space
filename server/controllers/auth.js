@@ -24,8 +24,7 @@ export const register = async (req, res) => {
 
         const token = jwt.sign(
             {
-                id: newUser._id,
-                username: newUser.username,
+                id: newUser._id
             },
             process.env.JWT_SECRET,
             {
@@ -37,6 +36,7 @@ export const register = async (req, res) => {
 
         res.json({
             newUser,
+            token,
             message: 'Registration is complete',
         });
     } catch (e) {

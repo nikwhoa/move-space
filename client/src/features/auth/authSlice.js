@@ -49,7 +49,7 @@ export const loginUser = createAsyncThunk(
     }
 );
 
-export const getMe = createAsyncThunk('auth/loginUser', async () => {
+export const getMe = createAsyncThunk('auth/getMe', async () => {
     try {
         const { data } = await axios.get('/auth/me');
         return data;

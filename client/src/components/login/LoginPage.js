@@ -8,8 +8,10 @@ export const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const { status } = useSelector((state) => state.auth);
+
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
     const isAuth = useSelector(checkIsAuth);
 
     useEffect(() => {
@@ -17,10 +19,10 @@ export const LoginPage = () => {
             toast(status);
         }
 
-        // if (isAuth) {
-        //     navigate('/')
-        // }
-    }, [status, navigate]);
+        if (isAuth) {
+            navigate('/')
+        }
+    },[status, isAuth, navigate]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -54,7 +56,7 @@ export const LoginPage = () => {
                         type='password'
                         placeholder='password'
                         className='form-input'
-                        autoComplete='new-password'
+                        autoComplete='current-password'
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                     />
