@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 
 export const register = async (req, res) => {
     try {
-        const { username, password } = req.body;
+        const { username, password, admin, JWT_SECRET } = req.body;
 
         const isUsed = await User.findOne({ username });
 
@@ -16,15 +16,23 @@ export const register = async (req, res) => {
 
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
+        const administrator = JWT_SECRET === process.env.JWT_SECRET;
+
+        if (admin === true && !administrator) {
+            return res.json({
+                message: 'Wrong secret key',
+            });
+        }
 
         const newUser = new User({
             username,
+            admin: !!administrator,
             password: hash,
         });
 
         const token = jwt.sign(
             {
-                id: newUser._id
+                id: newUser._id,
             },
             process.env.JWT_SECRET,
             {

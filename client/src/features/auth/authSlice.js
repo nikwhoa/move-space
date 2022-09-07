@@ -1,12 +1,16 @@
+/* eslint-disable comma-dangle */
+/* eslint-disable consistent-return */
+/* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../../utils/axios';
 
 const initialState = {
     user: null,
     status: null,
-    isLoading: false,
+    isLoading: true,
     error: null,
     token: null,
+    isAdmin: false,
 };
 
 export const registerUser = createAsyncThunk(
@@ -67,6 +71,7 @@ export const authSlice = createSlice({
             state.token = null;
             state.isLoading = false;
             state.status = null;
+            state.logout = true;
         },
     },
     extraReducers: {
@@ -101,8 +106,16 @@ export const authSlice = createSlice({
             state.status = null;
         },
         [getMe.fulfilled]: (state, action) => {
-            state.isLoading = false;
+            state.isLoading = 'loaded';
             state.status = null;
+            if (
+                action.payload.user === null
+                || action.payload.user === undefined
+            ) {
+                state.isAdmin = false;
+            } else {
+                state.isAdmin = action.payload.user.admin;
+            }
             state.user = action.payload?.user;
             state.token = action.payload?.token;
         },
@@ -114,6 +127,7 @@ export const authSlice = createSlice({
 });
 
 export const checkIsAuth = (state) => Boolean(state.auth.token);
+export const checkIsAdmin = (state) => Boolean(state.auth.isAdmin);
 
 export const { logout } = authSlice.actions;
 

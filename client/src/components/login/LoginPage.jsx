@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import {checkIsAuth, loginUser} from '../../features/auth/authSlice';
-import {useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { checkIsAuth, loginUser } from '../../features/auth/authSlice';
 
-export const LoginPage = () => {
+const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const { status } = useSelector((state) => state.auth);
@@ -20,9 +20,9 @@ export const LoginPage = () => {
         }
 
         if (isAuth) {
-            navigate('/')
+            navigate('/');
         }
-    },[status, isAuth, navigate]);
+    }, [status, isAuth, navigate]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -39,10 +39,11 @@ export const LoginPage = () => {
         <div className='login'>
             <form>
                 <h1 className='text-center'>Вхід до профілю</h1>
-                <label className='label'>
+                <label className='label' htmlFor='username'>
                     Username
                     <input
                         type='text'
+                        id='username'
                         placeholder='username'
                         className='form-input'
                         autoComplete='name'
@@ -50,10 +51,11 @@ export const LoginPage = () => {
                         value={username}
                     />
                 </label>
-                <label className='label'>
+                <label className='label' htmlFor='password'>
                     Пароль
                     <input
                         type='password'
+                        id='password'
                         placeholder='password'
                         className='form-input'
                         autoComplete='current-password'
@@ -72,3 +74,5 @@ export const LoginPage = () => {
         </div>
     );
 };
+
+export default LoginPage;

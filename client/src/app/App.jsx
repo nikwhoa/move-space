@@ -9,16 +9,17 @@ import MainScreen from '../components/mainScreen/MainScreen';
 import Schedule from '../components/schedule/Schedule';
 import Trainers from '../components/trainers/Trainers';
 import RegisterPage from '../components/register/RegisterPage';
-import { LoginPage } from '../components/login/LoginPage';
+import LoginPage from '../components/login/LoginPage';
 import { getMe } from '../features/auth/authSlice';
 import 'react-toastify/dist/ReactToastify.min.css';
+import Admin from '../components/admin/Admin';
 
 const App = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getMe());
-    });
+    }, [dispatch]);
 
     return (
         <div className='site-wrap'>
@@ -31,6 +32,7 @@ const App = () => {
                     <Route path='/trainers' element={<Trainers />} />
                     <Route path='/register' element={<RegisterPage />} />
                     <Route path='/login' element={<LoginPage />} />
+                    <Route path='/admin' element={<Admin />} />
                 </Routes>
                 <ToastContainer
                     position='bottom-center'

@@ -7,6 +7,13 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    admin: {
+      type: Boolean,
+    },
+    JWT_SECRET: {
+      type: String,
+      hidden: true,
+    },
     password: {
       type: String,
       required: true,
