@@ -16,6 +16,7 @@
         "react/function-component-definition": "off",
         "no-trailing-spaces": "off",
         "jsx-quotes": ["error", "prefer-single"],
-        "react/jsx-indent-props": "off"
+        "react/jsx-indent-props": "off",
+        "arrow-body-style": "off"
     }
 }

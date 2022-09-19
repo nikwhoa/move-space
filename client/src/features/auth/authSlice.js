@@ -71,6 +71,7 @@ export const authSlice = createSlice({
             state.token = null;
             state.isLoading = false;
             state.status = null;
+            state.isAdmin = false;
             state.logout = true;
         },
     },
@@ -95,6 +96,7 @@ export const authSlice = createSlice({
             state.isLoading = false;
             state.status = action.payload.message;
             state.user = action.payload.user;
+            state.isAdmin = action.payload.user.admin;
             state.token = action.payload.token;
         },
         [loginUser.rejected]: (state, action) => {
@@ -109,8 +111,9 @@ export const authSlice = createSlice({
             state.isLoading = 'loaded';
             state.status = null;
             if (
-                action.payload.user === null
-                || action.payload.user === undefined
+                // eslint-disable-next-line operator-linebreak
+                action.payload.user === null ||
+                action.payload.user === undefined
             ) {
                 state.isAdmin = false;
             } else {

@@ -84,7 +84,7 @@ export const login = async (req, res) => {
         res.json({
             token,
             user,
-            message: 'You signed',
+            message: 'Ви ввійшли в обліковий запис',
         });
     } catch (e) {
         res.json({

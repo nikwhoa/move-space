@@ -22,7 +22,7 @@ const LoginPage = () => {
         if (isAuth) {
             navigate('/');
         }
-    }, [status, isAuth, navigate]);
+    }, [status, isAuth]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
