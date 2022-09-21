@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 
 export const register = async (req, res) => {
     try {
-        const { username, password, admin, JWT_SECRET } = req.body;
+        const { username, password, admin, JWT_SECRET, email } = req.body;
 
         const isUsed = await User.findOne({ username });
 
@@ -28,6 +28,7 @@ export const register = async (req, res) => {
             username,
             admin: !!administrator,
             password: hash,
+            email,
         });
 
         const token = jwt.sign(

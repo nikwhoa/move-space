@@ -1,9 +1,17 @@
+import React from 'react';
 import './schedule.scss';
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 const Schedule = () => {
     return (
-        <motion.div transition={{duration: 0.75}} initial={{opacity: 0}} animate={{opacity: 1}} exit={{opacity: 0}} className='site-section section-2' id='schedule-section'>
+        <motion.div
+            transition={{ duration: 0.75 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className='site-section section-2'
+            id='schedule-section'
+        >
             <div className='container'>
                 <div className='row'>
                     <div className='col-lg-6 mb-5'>
