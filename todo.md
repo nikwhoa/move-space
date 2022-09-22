@@ -1,7 +1,6 @@
-! after adimn register an user its going to login this user and amin is logged out
 # Logic for administrator
- - Create a new user
- - Delete a user
+ - Create a new user (done)
+ - Delete a user (working)
  - Change a user's password
  - Change a user's role
  - Generate user's link
