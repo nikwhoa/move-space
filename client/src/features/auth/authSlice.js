@@ -23,9 +23,9 @@ export const registerUser = createAsyncThunk(
                 email
             });
 
-            if (data.token) {
-                localStorage.setItem('token', data.token);
-            }
+            // if (data.token) {
+            //     localStorage.setItem('token', data.token);
+            // }
 
             return data;
         } catch (error) {
@@ -83,8 +83,8 @@ export const authSlice = createSlice({
         [registerUser.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.status = action.payload.message;
-            state.user = action.payload.user;
-            state.token = action.payload.token;
+            // state.user = action.payload.user;
+            // state.token = action.payload.token;
         },
         [registerUser.rejected]: (state, action) => {
             state.isLoading = false;

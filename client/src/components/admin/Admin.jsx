@@ -7,6 +7,7 @@ import LoadingSpinner from '../../utils/LoadingSpinner';
 import { checkIsAdmin, checkIsAuth } from '../../features/auth/authSlice';
 import CreateUser from './createUser/CreateUser';
 import './admin.scss';
+import Users from './users/Users';
 
 const Admin = () => {
     const isAdmin = useSelector(checkIsAdmin);
@@ -48,6 +49,10 @@ const Admin = () => {
                             <Route
                                 path='/create-user'
                                 element={<CreateUser />}
+                            />
+                            <Route
+                                path='/users'
+                                element={<Users />}
                             />
                         </Routes>
                     </div>

@@ -1,4 +1,6 @@
+/* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from '../../utils/axios';
 
 const initialState = {
     users: [],
@@ -7,10 +9,11 @@ const initialState = {
 
 export const getUsers = createAsyncThunk('users/get', async () => {
     try {
-        const { data } = await axios.get('/users');
+        const { data } = await axios.get('/users/get'); // http://localhost:5100/api/users/get
+        // console.log(data);
         return data;
     } catch (error) {
-        console.log(error);
+        throw new Error(error);
     }
 });
 

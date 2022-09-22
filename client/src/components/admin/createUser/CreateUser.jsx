@@ -23,9 +23,9 @@ const CreateUser = () => {
 
         setPassword(retVal);
     };
-
+    console.log(status);
     useEffect(() => {
-        if (status) {
+        if (status !== 'Ви ввійшли в обліковий запис') {
             toast(status);
         }
     }, [status]);
@@ -39,7 +39,7 @@ const CreateUser = () => {
             setUsername('');
             setEmail('');
         } catch (error) {
-            console.log(error);
+            throw new Error(error);
         }
     };
 
