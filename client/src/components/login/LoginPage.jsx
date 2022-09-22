@@ -26,13 +26,10 @@ const LoginPage = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        try {
-            dispatch(loginUser({ username, password }));
-            setPassword('');
-            setUsername('');
-        } catch (error) {
-            console.log(error);
-        }
+
+        dispatch(loginUser({ username, password }));
+        setPassword('');
+        setUsername('');
     };
 
     return (

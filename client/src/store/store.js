@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { authSlice } from '../features/auth/authSlice';
+// eslint-disable-next-line import/no-named-as-default
+import authSlice from '../features/auth/authSlice';
 import trainers from '../features/trainers/trainersSlice';
 
 const store = configureStore({

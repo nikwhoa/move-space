@@ -40,6 +40,9 @@ const Admin = () => {
                             <li>
                                 <Link to='create-schedule'>Додати розклад</Link>
                             </li>
+                            <li>
+                                <Link to='users'>Користувачі</Link>
+                            </li>
                         </ul>
                         <Routes>
                             <Route

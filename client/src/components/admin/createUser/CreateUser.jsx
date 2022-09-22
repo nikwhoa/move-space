@@ -13,15 +13,15 @@ const CreateUser = () => {
     const dispatch = useDispatch();
 
     const generatePassword = () => {
-        const length = 10;
+        const length = 8;
         const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         let retVal = '';
         // eslint-disable-next-line no-plusplus
         for (let i = 0, n = charset.length; i < length; ++i) {
             retVal += charset.charAt(Math.floor(Math.random() * n));
         }
-        console.log(retVal);
-        return retVal;
+
+        setPassword(retVal);
     };
 
     useEffect(() => {
