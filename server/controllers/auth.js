@@ -10,7 +10,7 @@ export const register = async (req, res) => {
 
         if (isUsed) {
             return res.json({
-                message: 'This user is already exist',
+                message: 'Цей користувач вже існує',
             });
         }
 

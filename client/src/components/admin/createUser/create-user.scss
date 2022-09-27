@@ -4,7 +4,7 @@
     border-radius: 20px;
     box-sizing: border-box;
     // height: 500px;
-    padding: 5px 10px;
+    padding: 25px 10px;
     max-width: 420px;
     width: 100%;
 }
@@ -12,8 +12,16 @@
     padding: .6rem 1rem;
 }
 
-
-
+.login-text {
+    display: block !important;
+    text-align: left !important;
+    width: 75% !important;
+    margin: .5rem auto !important;
+    font-size: .8rem !important;
+}
+.create-user-input {
+    margin: 4rem 0 2.5rem !important;
+}
 
 .create-password {
     display: block;

@@ -53,15 +53,19 @@ const CreateUser = () => {
                     <label className='label'>
                         <input
                             type='text'
-                            placeholder="Ім'я користувача"
+                            placeholder='Логін користувача'
                             className='form-input'
                             autoComplete='username'
                             onChange={(e) => setUsername(e.target.value)}
                             value={username}
                         />
+                        <span className='login-text'>
+                            Це може бути ім&apos;я, але краще використовувати
+                            якесь унікальне ім&apos;я користувача
+                        </span>
                     </label>
                 </div>
-                <div className='input-container'>
+                <div className='input-container create-user-input'>
                     <label className='label'>
                         <input
                             type='password'
