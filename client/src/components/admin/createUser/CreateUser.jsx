@@ -25,7 +25,7 @@ const CreateUser = () => {
 
         setPassword(retVal);
     };
-    console.log(status);
+
     useEffect(() => {
         if (status !== 'Ви ввійшли в обліковий запис') {
             toast(status);

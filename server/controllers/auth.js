@@ -70,7 +70,7 @@ export const login = async (req, res) => {
 
         if (!isPasswordCorrect) {
             return res.json({
-                message: 'Password is incorrect',
+                message: 'Неправильний пароль',
             });
         }
 

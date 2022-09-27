@@ -34,32 +34,34 @@ const LoginPage = () => {
 
     return (
         <div className='login'>
-            <form>
+            <form className='login-form'>
                 <h1 className='text-center'>Вхід до профілю</h1>
-                <label className='label' htmlFor='username'>
-                    Username
-                    <input
-                        type='text'
-                        id='username'
-                        placeholder='username'
-                        className='form-input'
-                        autoComplete='name'
-                        onChange={(e) => setUsername(e.target.value)}
-                        value={username}
-                    />
-                </label>
-                <label className='label' htmlFor='password'>
-                    Пароль
-                    <input
-                        type='password'
-                        id='password'
-                        placeholder='password'
-                        className='form-input'
-                        autoComplete='current-password'
-                        onChange={(e) => setPassword(e.target.value)}
-                        value={password}
-                    />
-                </label>
+                <div className='input-container'>
+                    <label className='label' htmlFor='username'>
+                        <input
+                            type='text'
+                            id='username'
+                            placeholder='Ваш юзернейм'
+                            className='form-input'
+                            autoComplete='name'
+                            onChange={(e) => setUsername(e.target.value)}
+                            value={username}
+                        />
+                    </label>
+                </div>
+                <div className='input-container'>
+                    <label className='label' htmlFor='password'>
+                        <input
+                            type='password'
+                            id='password'
+                            placeholder='Ваш пароль'
+                            className='form-input'
+                            autoComplete='current-password'
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
+                        />
+                    </label>
+                </div>
                 <button
                     type='submit'
                     className='btn btn-primary btn-block'

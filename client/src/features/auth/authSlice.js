@@ -97,7 +97,15 @@ export const authSlice = createSlice({
             state.isLoading = false;
             state.status = action.payload.message;
             state.user = action.payload.user;
-            state.isAdmin = action.payload.user.admin;
+            if (
+                // eslint-disable-next-line operator-linebreak
+                action.payload.user === null ||
+                action.payload.user === undefined
+            ) {
+                state.isAdmin = false;
+            } else {
+                state.isAdmin = action.payload.user.admin;
+            }
             state.token = action.payload.token;
         },
         [loginUser.rejected]: (state, action) => {
