@@ -1,7 +1,47 @@
+.create-user-form {
+    background-color: #15172b;
+    margin: 2rem auto;
+    border-radius: 20px;
+    box-sizing: border-box;
+    // height: 500px;
+    padding: 5px 10px;
+    max-width: 420px;
+    width: 100%;
+}
+.create-user-btn {
+    padding: .6rem 1rem;
+}
+.input-container {
+    height: 40px;
+    position: relative;
+    width: 100%;
+    margin: 2.5rem 0;
+}
+
+.form-input {
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 1rem;
+    height: 100%;
+    outline: 0;
+    padding: 4px 20px 0;
+    width: 80%;
+}
+
 .create-password {
+    display: block;
+    position: absolute;
+    right: 40px;
+    width: 120px;
+    bottom: 0px;
+    height: 40px;
     font-size: 0.8rem !important;
     padding: 0.2rem 0.4rem !important;
 }
+
 // .pass-input {
 //     display: inline-block;
 // }

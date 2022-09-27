@@ -14,7 +14,9 @@ const CreateUser = () => {
 
     const generatePassword = () => {
         const length = 8;
-        const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        // eslint-disable-next-line operator-linebreak
+        const charset =
+            'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         let retVal = '';
         // eslint-disable-next-line no-plusplus
         for (let i = 0, n = charset.length; i < length; ++i) {
@@ -46,45 +48,53 @@ const CreateUser = () => {
     return (
         <div>
             <h1>Створити користувача</h1>
-            <form>
-                <label className='label'>
-                    Ім&apos;я користувача
-                    <input
-                        type='text'
-                        placeholder='username'
-                        className='form-input'
-                        autoComplete='username'
-                        onChange={(e) => setUsername(e.target.value)}
-                        value={username}
-                    />
-                </label>
-                <label className='label'>
-                    Пароль
-                    <br />
-                    <input
-                        type='password'
-                        placeholder='password'
-                        className='form-input pass-input'
-                        autoComplete='new-password'
-                        onChange={(e) => setPassword(e.target.value)}
-                        value={password}
-                    />
-                    <button type='button' className='btn btn-primary btn-block create-password' onClick={generatePassword}>Створити</button>
-                </label>
-                <label className='label'>
-                    Электронна пошта
-                    <input
-                        type='email'
-                        placeholder='email'
-                        className='form-input'
-                        autoComplete='email'
-                        onChange={(e) => setEmail(e.target.value)}
-                        value={email}
-                    />
-                </label>
+            <form className='create-user-form'>
+                <div className='input-container'>
+                    <label className='label'>
+                        <input
+                            type='text'
+                            placeholder="Ім'я користувача"
+                            className='form-input'
+                            autoComplete='username'
+                            onChange={(e) => setUsername(e.target.value)}
+                            value={username}
+                        />
+                    </label>
+                </div>
+                <div className='input-container'>
+                    <label className='label'>
+                        <input
+                            type='password'
+                            placeholder='Пароль'
+                            className='form-input pass-input'
+                            autoComplete='new-password'
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
+                        />
+                        <button
+                            type='button'
+                            className='btn btn-primary btn-block create-password'
+                            onClick={generatePassword}
+                        >
+                            Створити
+                        </button>
+                    </label>
+                </div>
+                <div className='input-container'>
+                    <label className='label'>
+                        <input
+                            type='email'
+                            placeholder='Электронна пошта'
+                            className='form-input'
+                            autoComplete='email'
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                        />
+                    </label>
+                </div>
                 <button
                     type='submit'
-                    className='btn btn-primary btn-block'
+                    className='btn btn-primary btn-block create-user-btn'
                     onClick={(e) => handleSubmit(e)}
                 >
                     Підтвердити
