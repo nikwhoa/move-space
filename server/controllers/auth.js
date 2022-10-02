@@ -119,3 +119,12 @@ export const getMe = async (req, res) => {
         res.json({ message: 'No access' });
     }
 };
+
+export const removeUser = async (req, res) => {
+    const id = req.params.id;
+
+    await User.deleteOne({ _id: id });
+
+    res.json({ message: 'Користувач видалений' });
+
+};

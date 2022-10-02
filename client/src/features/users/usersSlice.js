@@ -5,6 +5,7 @@ import axios from '../../utils/axios';
 const initialState = {
     users: [],
     loading: false,
+    status: null,
 };
 
 export const getUsers = createAsyncThunk('users/get', async () => {
@@ -17,10 +18,23 @@ export const getUsers = createAsyncThunk('users/get', async () => {
     }
 });
 
+export const removeUser = createAsyncThunk('auth/remove', async (id) => {
+    const { data } = await axios.post(`/auth/remove/${id}`);
+    return data;
+});
+
 export const usersSlice = createSlice({
     name: 'users',
     initialState,
-    reducers: {},
+    reducers: {
+        deleteUsername: (state, action) => {
+            state.users = state.users.filter(
+                // eslint-disable-next-line no-underscore-dangle
+                (user) => user._id !== action.payload,
+            );
+            state.status = null;
+        },
+    },
     extraReducers: {
         [getUsers.pending]: (state) => {
             state.loading = true;
@@ -32,7 +46,20 @@ export const usersSlice = createSlice({
         [getUsers.rejected]: (state) => {
             state.loading = false;
         },
+        [removeUser.pending]: (state) => {
+            state.isLoading = true;
+        },
+        [removeUser.fulfilled]: (state, action) => {
+            state.isLoading = false;
+            state.status = action.payload.message;
+        },
+        [removeUser.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.status = action.payload.message;
+        },
     },
 });
+
+export const { deleteUsername } = usersSlice.actions;
 
 export default usersSlice.reducer;

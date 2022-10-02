@@ -20,12 +20,8 @@ export const registerUser = createAsyncThunk(
             const { data } = await axios.post('/auth/register', {
                 username,
                 password,
-                email
+                email,
             });
-
-            // if (data.token) {
-            //     localStorage.setItem('token', data.token);
-            // }
 
             return data;
         } catch (error) {
@@ -79,12 +75,11 @@ export const authSlice = createSlice({
     extraReducers: {
         [registerUser.pending]: (state) => {
             state.isLoading = true;
+            state.status = null;
         },
         [registerUser.fulfilled]: (state, action) => {
             state.isLoading = false;
             state.status = action.payload.message;
-            // state.user = action.payload.user;
-            // state.token = action.payload.token;
         },
         [registerUser.rejected]: (state, action) => {
             state.isLoading = false;

@@ -27,10 +27,10 @@ const CreateUser = () => {
     };
 
     useEffect(() => {
-        if (status !== 'Ви ввійшли в обліковий запис') {
+        if (status) {
             toast(status);
         }
-    }, [status]);
+    }, [status, dispatch]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
