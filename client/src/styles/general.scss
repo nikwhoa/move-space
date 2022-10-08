@@ -556,3 +556,33 @@ form {
 .login-form {
     text-align: center;
 }
+.change-password-popup {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.change-pass {
+    background-color: #15172b;
+    border-radius: 20px;
+    padding: 20px;
+    max-width: 360px;
+    width: 100%;
+}
+.close-popup {
+    display: block;
+    float: right;
+    position: relative;
+    top: -44px;
+    font-size: 1.3rem;
+    border: 0;
+    background-color: transparent;
+    color: #bbbcbc;
+    cursor: pointer;
+    &:hover {
+        color: #fff;
+    }
+}

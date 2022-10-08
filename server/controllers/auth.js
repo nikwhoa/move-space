@@ -128,3 +128,16 @@ export const removeUser = async (req, res) => {
     res.json({ message: 'Користувач видалений' });
 
 };
+
+export const changePassword = async (req, res) => {
+    const password = req.body.id.password;
+    const id = req.body.id.id;
+    // TODO: think about how to make it more secure. Maybe hash password in frontend
+
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt);
+
+    await User.updateOne({ _id: id }, { password: hash });
+
+    res.json({ message: 'Пароль змінено' });
+}

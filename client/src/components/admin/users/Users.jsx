@@ -1,23 +1,36 @@
-// TODO: delete users from redux first then delete from database
+/* eslint-disable no-shadow */
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable no-underscore-dangle */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
-import { getUsers, removeUser, deleteUsername } from '../../../features/users/usersSlice';
+import {
+    getUsers,
+    removeUser,
+    deleteUsername,
+} from '../../../features/users/usersSlice';
 import LoadingSpinner from '../../../utils/LoadingSpinner';
+import ChangePasswordPopUp from './ChangePasswordPopUp';
 import './users.scss';
 
 const Users = () => {
     const users = useSelector((state) => state.users.users);
     const { isLoading } = useSelector((state) => state.users.loading);
     const status = useSelector((state) => state.users.status);
+    const [isShowPopUp, setShowPopUp] = useState(false);
+    const [id, setId] = useState(null);
+    const [username, setUsername] = useState('');
 
     const dispatch = useDispatch();
 
     const deleteUser = (id) => {
         dispatch(deleteUsername(id));
         dispatch(removeUser(id));
+    };
+    const changePassword = (id, name) => {
+        setShowPopUp(!isShowPopUp);
+        setId(id);
+        setUsername(name);
     };
 
     useEffect(() => {
@@ -29,6 +42,13 @@ const Users = () => {
 
     return (
         <div>
+            {isShowPopUp && (
+                <ChangePasswordPopUp
+                    setShowPopUp={setShowPopUp}
+                    id={id}
+                    name={username}
+                />
+            )}
             <h1>Користувачі</h1>
             <table className='table table-bordered table-custom table-striped user-list'>
                 <thead>
@@ -49,7 +69,16 @@ const Users = () => {
                             <tr key={user._id}>
                                 <td>{user.username}</td>
                                 <td>{user.email}</td>
-                                <td>Change pass</td>
+                                <td>
+                                    <button
+                                        className='btn btn-primary'
+                                        type='button'
+                                        disabled={user.username === 'admin'}
+                                        onClick={() => changePassword(user._id, user.username)}
+                                    >
+                                        Змінити
+                                    </button>
+                                </td>
                                 <td>Change user role</td>
                                 <td>
                                     <button

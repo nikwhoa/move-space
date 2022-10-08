@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable comma-dangle */
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../../utils/axios';
@@ -23,6 +25,29 @@ export const removeUser = createAsyncThunk('auth/remove', async (id) => {
     return data;
 });
 
+export const changePassword = createAsyncThunk(
+    'auth/changePass',
+    // eslint-disable-next-line consistent-return
+    async (id, password) => {
+        try {
+            const response = await axios.post('/auth/changePass/', {
+                id,
+                password,
+            });
+            return response.data;
+        } catch (error) {
+            console.log(error);
+        }
+    }
+);
+// async (id, password) => {
+//     const { data } = await axios.post(`/auth/changePass/${id}`, {
+//         password,
+//     });
+//     return data;
+// },
+// );
+
 export const usersSlice = createSlice({
     name: 'users',
     initialState,
@@ -30,10 +55,17 @@ export const usersSlice = createSlice({
         deleteUsername: (state, action) => {
             state.users = state.users.filter(
                 // eslint-disable-next-line no-underscore-dangle
-                (user) => user._id !== action.payload,
+                (user) => user._id !== action.payload
             );
             state.status = null;
         },
+        // changeUserPassword: (state, action) => {
+        //     state.users = state.users.filter(
+        //         // eslint-disable-next-line no-underscore-dangle
+        //         (user) => user._id !== action.payload
+        //     );
+        //     state.status = null;
+        // },
     },
     extraReducers: {
         [getUsers.pending]: (state) => {
@@ -57,9 +89,20 @@ export const usersSlice = createSlice({
             state.isLoading = false;
             state.status = action.payload.message;
         },
+        [changePassword.pending]: (state) => {
+            state.isLoading = true;
+        },
+        [changePassword.fulfilled]: (state, action) => {
+            state.isLoading = false;
+            state.status = action.payload.message;
+        },
+        // [changePassword.rejected]: (state, action) => {
+        //     state.isLoading = false;
+        //     // state.status = action.payload.message;
+        // },
     },
 });
 
-export const { deleteUsername } = usersSlice.actions;
+export const { deleteUsername, changeUserPassword } = usersSlice.actions;
 
 export default usersSlice.reducer;
