@@ -4,7 +4,7 @@ import User from '../models/User.js';
 
 export const register = async (req, res) => {
     try {
-        const { username, password, admin, JWT_SECRET, email } = req.body;
+        const { username, password, admin, JWT_SECRET, email, role = 'user' } = req.body;
 
         const isUsed = await User.findOne({ username });
 
@@ -29,6 +29,7 @@ export const register = async (req, res) => {
             admin: !!administrator,
             password: hash,
             email,
+            role,
         });
 
         const token = jwt.sign(

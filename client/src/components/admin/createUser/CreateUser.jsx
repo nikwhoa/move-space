@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,6 +10,7 @@ const CreateUser = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+    const [role, setRole] = useState('');
     const { status } = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
@@ -36,10 +38,11 @@ const CreateUser = () => {
         e.preventDefault();
         try {
             // eslint-disable-next-line no-undef
-            dispatch(registerUser({ username, password, email }));
+            dispatch(registerUser({ username, password, email, role }));
             setPassword('');
             setUsername('');
             setEmail('');
+            setRole('');
         } catch (error) {
             throw new Error(error);
         }
@@ -95,6 +98,20 @@ const CreateUser = () => {
                             value={email}
                         />
                     </label>
+                </div>
+                <div className='input-container'>
+                    <label className='label' htmlFor='role' />
+                    <select
+                        name='role'
+                        id='role'
+                        className='form-input'
+                        onChange={(e) => setRole(e.target.value)}
+                        value={role}
+                    >
+                        <option value=''>Оберіть роль</option>
+                        <option value='trainer'>Тренер</option>
+                        <option value='user'>Користувач</option>
+                    </select>
                 </div>
                 <button
                     type='submit'

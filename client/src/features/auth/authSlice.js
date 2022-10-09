@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable comma-dangle */
 /* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
@@ -7,6 +8,7 @@ import axios from '../../utils/axios';
 const initialState = {
     user: null,
     status: null,
+    role: '',
     isLoading: true,
     error: null,
     token: null,
@@ -15,12 +17,13 @@ const initialState = {
 
 export const registerUser = createAsyncThunk(
     'auth/registerUser',
-    async ({ username, password, email }) => {
+    async ({ username, password, email, role }) => {
         try {
             const { data } = await axios.post('/auth/register', {
                 username,
                 password,
                 email,
+                role
             });
 
             return data;

@@ -74,12 +74,23 @@ const Users = () => {
                                         className='btn btn-primary'
                                         type='button'
                                         disabled={user.username === 'admin'}
-                                        onClick={() => changePassword(user._id, user.username)}
+                                        onClick={() =>
+                                            changePassword(
+                                                user._id,
+                                                user.username
+                                            )
+                                        }
                                     >
                                         Змінити
                                     </button>
                                 </td>
-                                <td>Change user role</td>
+                                <td>
+                                    {user.role === 'trainer' ? (
+                                        <span>Тренер</span>
+                                    ) : (
+                                        <span>Користувач</span>
+                                    )}
+                                </td>
                                 <td>
                                     <button
                                         className='btn btn-primary'

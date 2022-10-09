@@ -5,8 +5,8 @@
 	- Create backend environment (done)
 	- Create frontend environment (done)
 	- Need to improve it!
- - Change a user's role (working)
- - Generate user's link
+ - Change a user's role - (don't need to change user's role)
+ - Generate user's link (working on it)
 
  # Logic for trainers
  # Classes

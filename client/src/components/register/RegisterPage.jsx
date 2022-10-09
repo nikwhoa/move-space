@@ -9,6 +9,7 @@ import { checkIsAuth, registerUser } from '../../features/auth/authSlice';
 const RegisterPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+
     const { status } = useSelector((state) => state.auth);
 
     const dispatch = useDispatch();
