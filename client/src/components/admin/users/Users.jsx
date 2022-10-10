@@ -1,3 +1,6 @@
+/* eslint-disable react/jsx-curly-newline */
+/* eslint-disable implicit-arrow-linebreak */
+/* eslint-disable comma-dangle */
 /* eslint-disable no-shadow */
 /* eslint-disable import/no-named-as-default */
 /* eslint-disable no-underscore-dangle */
