@@ -7,8 +7,11 @@ export const register = async (req, res) => {
         const { username, password, admin, JWT_SECRET, email, role = 'user' } = req.body;
 
         const isUsed = await User.findOne({ username });
+        const isEmailUsed = await User.findOne({ email });
 
-        if (isUsed) {
+        console.log(isEmailUsed, 'isEmailUsed');
+
+        if (isUsed || isEmailUsed) {
             return res.json({
                 message: 'Цей користувач вже існує',
             });

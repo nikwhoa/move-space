@@ -26,9 +26,12 @@ app.use('/api/users', usersRoute);
 
 async function start() {
     try {
-        await mongoose.connect(
-            `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.mnbq4kc.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
-        );
+        // await mongoose.connect(
+        //     `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.mnbq4kc.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
+        // );
+
+        await mongoose.connect(`mongodb://localhost:27017/move-space-local`);
+
         app.listen(PORT, () => console.log(`server started on port ${PORT}`));
     } catch (error) {
         console.log(error);
