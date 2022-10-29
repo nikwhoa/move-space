@@ -116,7 +116,7 @@ export const authSlice = createSlice({
             state.status = null;
         },
         [getMe.fulfilled]: (state, action) => {
-            state.isLoading = 'loaded';
+            state.isLoading = false;
             state.status = null;
 
             if (

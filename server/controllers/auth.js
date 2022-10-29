@@ -9,8 +9,6 @@ export const register = async (req, res) => {
         const isUsed = await User.findOne({ username });
         const isEmailUsed = await User.findOne({ email });
 
-        console.log(isEmailUsed, 'isEmailUsed');
-
         if (isUsed) {
             return res.json({
                 message: 'Цей користувач вже існує',

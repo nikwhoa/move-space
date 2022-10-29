@@ -1,10 +1,15 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 // eslint-disable-next-line object-curly-newline
 import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../../utils/LoadingSpinner';
-import { checkIsAdmin, checkIsAuth } from '../../features/auth/authSlice';
+import {
+    checkIsAdmin,
+    checkIsAuth,
+    checkIsTrainer,
+} from '../../features/auth/authSlice';
 import CreateUser from './createUser/CreateUser';
 import './admin.scss';
 import Users from './users/Users';
@@ -12,9 +17,13 @@ import Users from './users/Users';
 const Admin = () => {
     const isAdmin = useSelector(checkIsAdmin);
     const { isLoading } = useSelector((state) => state.auth);
+    const { username } = useSelector((state) => state.auth.user) || {};
     const isAuth = useSelector(checkIsAuth);
     const { logout } = useSelector((state) => state.auth);
     const navigate = useNavigate();
+    const isTrainer = useSelector(checkIsTrainer) === 'trainer';
+
+    const showAdmin = isAdmin || isTrainer;
 
     useEffect(() => {
         if (logout) {
@@ -24,48 +33,43 @@ const Admin = () => {
 
     return (
         <div>
-            {isAuth && isAdmin ? (
+            {isLoading ? (
+                <LoadingSpinner />
+            ) : (
                 <div className='text-center'>
-                    Welcome, Admin!
+                    Привіт, {username}!
                     <div className='justify-content-center'>
                         <ul className='admin-links'>
                             <li>
                                 <Link to='/admin'>Адмін-панель</Link>
                             </li>
-                            <li>
-                                <Link to='create-user'>Додати користувача</Link>
-                            </li>
+                            {!isTrainer ? (
+                                <li>
+                                    <Link to='create-user'>
+                                        Додати користувача
+                                    </Link>
+                                </li>
+                            ) : null}
                             <li>
                                 <Link to='create-class'>Додати тренування</Link>
                             </li>
                             <li>
                                 <Link to='create-schedule'>Додати розклад</Link>
                             </li>
-                            <li>
-                                <Link to='users'>Користувачі</Link>
-                            </li>
+                            {!isTrainer ? (
+                                <li>
+                                    <Link to='users'>Користувачі</Link>
+                                </li>
+                            ) : null}
                         </ul>
                         <Routes>
                             <Route
                                 path='/create-user'
                                 element={<CreateUser />}
                             />
-                            <Route
-                                path='/users'
-                                element={<Users />}
-                            />
+                            <Route path='/users' element={<Users />} />
                         </Routes>
                     </div>
-                </div>
-            ) : (
-                <div>
-                    {isLoading !== 'loaded' ? (
-                        <LoadingSpinner />
-                    ) : (
-                        <div className='text-center'>
-                            У вас немає прав для перегляду цієї сторінки
-                        </div>
-                    )}
                 </div>
             )}
         </div>

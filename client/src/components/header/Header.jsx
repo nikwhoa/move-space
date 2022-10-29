@@ -29,7 +29,7 @@ const Header = () => {
         dispatch(logout());
         toast('Ви вийшли з облікового запису');
     };
-    console.log(showAdmin);
+
     return (
         <div className='sticky-wrapper'>
             <header className='site-navbar py-4 js-sticky-header site-navbar-target'>
