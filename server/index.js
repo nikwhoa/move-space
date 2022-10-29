@@ -26,6 +26,7 @@ app.use('/api/users', usersRoute);
 
 async function start() {
     try {
+        // mongoexport --uri mongodb+srv://test@cluster0.mnbq4kc.mongodb.net/move-space-app --collection=users --out=users.json
         // await mongoose.connect(
         //     `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.mnbq4kc.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
         // );

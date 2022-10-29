@@ -1,17 +1,5 @@
-# Logic for administrator
- - Create a new user (done)
- - Delete a user (done)
- - Change a user's password (in process)
-	- Create backend environment (done)
-	- Create frontend environment (done)
-	- Need to improve it!
- - Change a user's role - (don't need to change user's role)
- - Generate user's link (working on it)
-
- # Logic for trainers
- # Classes
- # Schedules
- # Logic for user
+# Working on trainer role
+ - adding admin-panel for trainers
 
  <!-- 	"username": "admin",
 	"password": "eb1^^$!@",

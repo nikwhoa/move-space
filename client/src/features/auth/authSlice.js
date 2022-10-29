@@ -8,7 +8,7 @@ import axios from '../../utils/axios';
 const initialState = {
     user: null,
     status: null,
-    role: '',
+    role: null,
     isLoading: true,
     error: null,
     token: null,
@@ -105,6 +105,7 @@ export const authSlice = createSlice({
                 state.isAdmin = action.payload.user.admin;
             }
             state.token = action.payload.token;
+            state.role = action.payload.user.role;
         },
         [loginUser.rejected]: (state, action) => {
             state.isLoading = false;
@@ -117,15 +118,20 @@ export const authSlice = createSlice({
         [getMe.fulfilled]: (state, action) => {
             state.isLoading = 'loaded';
             state.status = null;
+
             if (
                 // eslint-disable-next-line operator-linebreak
                 action.payload.user === null ||
                 action.payload.user === undefined
             ) {
                 state.isAdmin = false;
+                state.role = null;
             } else {
                 state.isAdmin = action.payload.user.admin;
+                state.role = action.payload.user.role;
             }
+            // console.log(action.payload.user);
+            // state.role = action.payload.user.role === undefined ? '' : action.payload.user.role;
             state.user = action.payload?.user;
             state.token = action.payload?.token;
         },
@@ -138,6 +144,7 @@ export const authSlice = createSlice({
 
 export const checkIsAuth = (state) => Boolean(state.auth.token);
 export const checkIsAdmin = (state) => Boolean(state.auth.isAdmin);
+export const checkIsTrainer = (state) => state.auth.role;
 
 export const { logout } = authSlice.actions;
 

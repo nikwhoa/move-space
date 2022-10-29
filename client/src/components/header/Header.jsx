@@ -8,11 +8,20 @@ import {
     checkIsAuth,
     logout,
     checkIsAdmin,
+    checkIsTrainer,
 } from '../../features/auth/authSlice';
 
 const Header = () => {
     const isAuth = useSelector(checkIsAuth);
     const isAdmin = useSelector(checkIsAdmin);
+    let isTrainer = useSelector(checkIsTrainer) === 'trainer';
+
+    if (isAdmin) {
+        isTrainer = true;
+    }
+
+    const showAdmin = isAdmin || isTrainer;
+
     const dispatch = useDispatch();
 
     const logoutHandler = () => {
@@ -20,7 +29,7 @@ const Header = () => {
         dispatch(logout());
         toast('Ви вийшли з облікового запису');
     };
-
+    console.log(showAdmin);
     return (
         <div className='sticky-wrapper'>
             <header className='site-navbar py-4 js-sticky-header site-navbar-target'>
@@ -64,7 +73,8 @@ const Header = () => {
                                             Тренери
                                         </Link>
                                     </li>
-                                    {isAuth && isAdmin ? (
+
+                                    {isAuth && showAdmin ? (
                                         <li>
                                             <Link
                                                 to='/admin'

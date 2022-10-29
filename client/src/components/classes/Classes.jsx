@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Navigation, A11y, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { motion } from 'framer-motion';
@@ -9,7 +10,8 @@ import slide2 from './slide_2.jpg';
 import slide1 from './slide_1.jpg';
 import slide0 from './slide_0.jpg';
 
-// import 'swiper/css/bundle';
+// eslint-disable-next-line import/no-unresolved
+import 'swiper/css/bundle';
 import './classes.scss';
 
 const Classes = () => {
@@ -54,7 +56,7 @@ const Classes = () => {
                             scrollbar={{ draggable: true }}
                         >
                             <SwiperSlide>
-                                <a className='work-thumb' href='single.html'>
+                                <Link className='work-thumb' to='/classes/class/qwerty'>
                                     <div className='work-text'>
                                         <h3>Classes fitness name here</h3>
                                         <span className='category'>
@@ -66,7 +68,7 @@ const Classes = () => {
                                         alt='slide 4'
                                         className='img-fluid'
                                     />
-                                </a>
+                                </Link>
                             </SwiperSlide>
                             <SwiperSlide>
                                 <a className='work-thumb' href='single.html'>

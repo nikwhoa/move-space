@@ -13,6 +13,7 @@ import LoginPage from '../components/login/LoginPage';
 import { getMe } from '../features/auth/authSlice';
 import Admin from '../components/admin/Admin';
 import 'react-toastify/dist/ReactToastify.min.css';
+import Class from '../components/classes/Class';
 
 const App = () => {
     const dispatch = useDispatch();
@@ -28,10 +29,10 @@ const App = () => {
                 <Routes location={useLocation()} key={useLocation().pathname}>
                     <Route path='/' element={<MainScreen />} />
                     <Route path='/classes' element={<Classes />} />
+                    <Route path='/classes/class/:name' element={<Class />} />
                     <Route path='/schedule' element={<Schedule />} />
                     <Route path='/trainers' element={<Trainers />} />
                     <Route path='/register' element={<RegisterPage />} />
-                    {/* TODO: use register page to create user */}
                     <Route path='/login' element={<LoginPage />} />
                     <Route path='/admin/*' element={<Admin />} />
                 </Routes>

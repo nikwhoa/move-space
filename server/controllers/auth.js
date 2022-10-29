@@ -11,9 +11,15 @@ export const register = async (req, res) => {
 
         console.log(isEmailUsed, 'isEmailUsed');
 
-        if (isUsed || isEmailUsed) {
+        if (isUsed) {
             return res.json({
                 message: 'Цей користувач вже існує',
+            });
+        }
+
+        if (isEmailUsed) {
+            return res.json({
+                message: 'Цей email використовується',
             });
         }
 
