@@ -1,5 +1,5 @@
-# Working on trainer role
- - adding admin-panel for trainers
+# Working on classes
+ - creating form for add class (training)
 
  <!-- 	"username": "admin",
 	"password": "eb1^^$!@",
