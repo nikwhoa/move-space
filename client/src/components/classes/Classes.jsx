@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Navigation, A11y, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { motion } from 'framer-motion';
-
+import { useDispatch } from 'react-redux';
 import slide4 from './slide_4.jpg';
 import slide3 from './slide_3.jpg';
 import slide2 from './slide_2.jpg';
@@ -13,8 +13,15 @@ import slide0 from './slide_0.jpg';
 // eslint-disable-next-line import/no-unresolved
 import 'swiper/css/bundle';
 import './classes.scss';
+import { getClasses } from '../../features/classes/classesSlice';
 
 const Classes = () => {
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getClasses());
+    }, [dispatch]);
+
     return (
         <motion.div
             transition={{ duration: 0.75 }}
@@ -56,7 +63,10 @@ const Classes = () => {
                             scrollbar={{ draggable: true }}
                         >
                             <SwiperSlide>
-                                <Link className='work-thumb' to='/classes/class/qwerty'>
+                                <Link
+                                    className='work-thumb'
+                                    to='/classes/class/qwerty'
+                                >
                                     <div className='work-text'>
                                         <h3>Classes fitness name here</h3>
                                         <span className='category'>
