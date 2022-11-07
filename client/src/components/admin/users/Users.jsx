@@ -65,6 +65,7 @@ const Users = () => {
                     </tr>
                 </thead>
                 <tbody>
+
                     {isLoading === true ? (
                         <LoadingSpinner />
                     ) : (

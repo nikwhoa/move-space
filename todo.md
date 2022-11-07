@@ -1,5 +1,5 @@
 # Working on classes
- - creating form for add class (training)
+ - create functional for delete and update training
 
  <!-- 	"username": "admin",
 	"password": "eb1^^$!@",

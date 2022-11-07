@@ -28,3 +28,14 @@ export const createClass = async (req, res) => {
         res.json({ message: 'There is some mistake. More info: ' + e });
     }
 };
+
+export const deleteClass = async (req, res) => {
+    const { id } = req.params;
+    console.log(req.params);
+    try {
+        await Classes.findByIdAndDelete(id);
+        res.json({ message: 'Тренування успішно видалено' });
+    } catch (e) {
+        res.json({ message: 'There is some mistake. More info: ' + e });
+    }
+}

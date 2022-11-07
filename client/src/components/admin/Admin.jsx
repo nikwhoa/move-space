@@ -13,6 +13,9 @@ import {
 import CreateUser from './createUser/CreateUser';
 import './admin.scss';
 import Users from './users/Users';
+import Classes from './classes/Classes';
+import AllClasses from './classes/AllClasses';
+import CreateClass from './classes/CreateClass';
 
 const Admin = () => {
     const isAdmin = useSelector(checkIsAdmin);
@@ -50,9 +53,11 @@ const Admin = () => {
                                     </Link>
                                 </li>
                             ) : null}
-                            <li>
-                                <Link to='create-class'>Додати тренування</Link>
-                            </li>
+                            {!isTrainer ? (
+                                <li>
+                                    <Link to='classes'>Тренування</Link>
+                                </li>
+                            ) : null}
                             <li>
                                 <Link to='create-schedule'>Додати розклад</Link>
                             </li>
@@ -67,6 +72,9 @@ const Admin = () => {
                                 path='/create-user'
                                 element={<CreateUser />}
                             />
+                            <Route path='/classes' element={<Classes />} />
+                            <Route path='/classes/create' element={<CreateClass />} />
+                            {/* <Route path='/classes/all' element={<AllClasses />} /> */}
                             <Route path='/users' element={<Users />} />
                         </Routes>
                     </div>
