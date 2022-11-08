@@ -1,5 +1,6 @@
 # Working on classes
- - create functional for delete and update training
+ - [ ] frontend for classes
+ - [ ] create functional for update training
 
  <!-- 	"username": "admin",
 	"password": "eb1^^$!@",

@@ -31,7 +31,7 @@ export const createClass = async (req, res) => {
 
 export const deleteClass = async (req, res) => {
     const { id } = req.params;
-    console.log(req.params);
+
     try {
         await Classes.findByIdAndDelete(id);
         res.json({ message: 'Тренування успішно видалено' });

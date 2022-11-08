@@ -7,7 +7,7 @@ import {
     getClasses,
     deleteClass,
     removeClass,
-} from '../../../features/classes/classesSlice';
+} from '../../../slices/classes/classesSlice';
 import LoadingSpinner from '../../../utils/LoadingSpinner';
 
 function Classes() {
