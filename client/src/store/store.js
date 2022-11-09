@@ -1,9 +1,9 @@
 /* eslint-disable import/no-named-as-default */
 import { configureStore } from '@reduxjs/toolkit';
-import authSlice from '../features/auth/authSlice';
-import trainers from '../features/trainers/trainersSlice';
-import usersSlice from '../features/users/usersSlice';
-import classesSlice from '../features/classes/classesSlice';
+import authSlice from '../slices/auth/authSlice';
+import trainers from '../slices/trainers/trainersSlice';
+import usersSlice from '../slices/users/usersSlice';
+import classesSlice from '../slices/classes/classesSlice';
 
 const store = configureStore({
     reducer: {

@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { createClass } from '../../../features/classes/classesSlice';
+import { createClass } from '../../../slices/classes/classesSlice';
 
 const CreateClass = () => {
     const [className, setClassName] = useState('');

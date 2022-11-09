@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './register-page.scss';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { checkIsAuth, registerUser } from '../../features/auth/authSlice';
+import { checkIsAuth, registerUser } from '../../slices/auth/authSlice';
 
 const RegisterPage = () => {
     const [username, setUsername] = useState('');

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { checkIsAuth, loginUser } from '../../features/auth/authSlice';
+import { checkIsAuth, loginUser } from '../../slices/auth/authSlice';
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');

@@ -13,7 +13,7 @@ import slide0 from './slide_0.jpg';
 // eslint-disable-next-line import/no-unresolved
 import 'swiper/css/bundle';
 import './classes.scss';
-import { getClasses } from '../../features/classes/classesSlice';
+import { getClasses } from '../../slices/classes/classesSlice';
 
 const Classes = () => {
     const dispatch = useDispatch();

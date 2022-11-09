@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { registerUser } from '../../../features/auth/authSlice';
+import { registerUser } from '../../../slices/auth/authSlice';
 import './create-user.scss';
 
 const CreateUser = () => {

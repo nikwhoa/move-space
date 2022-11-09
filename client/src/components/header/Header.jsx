@@ -9,7 +9,7 @@ import {
     logout,
     checkIsAdmin,
     checkIsTrainer,
-} from '../../features/auth/authSlice';
+} from '../../slices/auth/authSlice';
 
 const Header = () => {
     const isAuth = useSelector(checkIsAuth);

@@ -10,7 +10,7 @@ import Schedule from '../components/schedule/Schedule';
 import Trainers from '../components/trainers/Trainers';
 import RegisterPage from '../components/register/RegisterPage';
 import LoginPage from '../components/login/LoginPage';
-import { getMe } from '../features/auth/authSlice';
+import { getMe } from '../slices/auth/authSlice';
 import Admin from '../components/admin/Admin';
 import 'react-toastify/dist/ReactToastify.min.css';
 import Class from '../components/classes/Class';

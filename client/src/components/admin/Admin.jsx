@@ -9,12 +9,11 @@ import {
     checkIsAdmin,
     checkIsAuth,
     checkIsTrainer,
-} from '../../features/auth/authSlice';
+} from '../../slices/auth/authSlice';
 import CreateUser from './createUser/CreateUser';
 import './admin.scss';
 import Users from './users/Users';
 import Classes from './classes/Classes';
-import AllClasses from './classes/AllClasses';
 import CreateClass from './classes/CreateClass';
 
 const Admin = () => {

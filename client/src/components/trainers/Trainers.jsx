@@ -2,7 +2,7 @@ import React, { Fragment, useEffect } from 'react';
 import './trainers.scss';
 import { motion } from 'framer-motion';
 import { useSelector, useDispatch } from 'react-redux';
-import { getTrainers } from '../../features/trainers/trainersSlice';
+import { getTrainers } from '../../slices/trainers/trainersSlice';
 
 const Trainers = () => {
     const trainers = useSelector((state) => state.trainers.trainers);

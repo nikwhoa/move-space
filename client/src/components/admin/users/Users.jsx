@@ -11,7 +11,7 @@ import {
     getUsers,
     removeUser,
     deleteUsername,
-} from '../../../features/users/usersSlice';
+} from '../../../slices/users/usersSlice';
 import LoadingSpinner from '../../../utils/LoadingSpinner';
 import ChangePasswordPopUp from './ChangePasswordPopUp';
 import './users.scss';

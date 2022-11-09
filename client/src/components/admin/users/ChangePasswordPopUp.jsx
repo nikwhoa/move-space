@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import {
     changeUserPassword,
     changePassword,
-} from '../../../features/users/usersSlice';
+} from '../../../slices/users/usersSlice';
 
 const ChangePasswordPopUp = (props) => {
     const { setShowPopUp, id, name } = props;
