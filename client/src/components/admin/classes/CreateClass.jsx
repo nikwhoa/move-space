@@ -1,3 +1,5 @@
+// TODO: do better image uploading status, validation and if geting an error
+/* eslint-disable no-unused-vars */
 /* eslint-disable comma-dangle */
 /* eslint-disable react/jsx-curly-newline */
 /* eslint-disable implicit-arrow-linebreak */
@@ -6,29 +8,28 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { createClass } from '../../../slices/classes/classesSlice';
+import {
+    createClass,
+    uploadPicture,
+} from '../../../slices/classes/classesSlice';
+import './style.scss';
 
 const CreateClass = () => {
     const [className, setClassName] = useState('');
     const [classDescription, setClassDescription] = useState('');
     const [classImage, setClassImage] = useState('');
-
+    const [image, setImage] = useState(null);
+    const [createBtn, setCreateBtn] = useState(false);
     const { status } = useSelector((state) => state.classes);
-    // const { isLoading } = useSelector((state) => state.classes);
+    const { isLoadingImage } = useSelector((state) => state.classes);
+
     const dispatch = useDispatch();
-    // eslint-disable-next-line no-unused-vars
     const navigate = useNavigate();
 
     useEffect(() => {
-        // TODO: reset status to null after toast
-
         if (status) {
             toast(status, { toastId: 12241234 });
         }
-
-        // if (!isLoading) {
-        //     navigate('/admin/classes');
-        // }
     }, [status, dispatch]);
 
     const handleSubmit = (e) => {
@@ -43,17 +44,18 @@ const CreateClass = () => {
                     classImage,
                 })
             );
-            setClassName('');
-            setClassDescription('');
-            setClassImage('');
+            dispatch(uploadPicture(image)).then(setCreateBtn(true));
+            // setClassName('');
+            // setClassDescription('');
+            // setClassImage('');
         } catch (error) {
             throw new Error(error);
         }
     };
 
     return (
-        <div>
-            <h1>Створити клас</h1>
+        <div className='create-class-wrapper'>
+            <h1>Створити тренування</h1>
             <form className='create-class-form'>
                 <div className='input-container'>
                     <label className='label'>
@@ -94,13 +96,38 @@ const CreateClass = () => {
                         />
                     </label>
                 </div>
-                <button
-                    type='submit'
-                    className='btn btn-primary'
-                    onClick={handleSubmit}
-                >
-                    Створити
-                </button>
+                <div className='input-container'>
+                    <label className='label'>
+                        <input
+                            type='file'
+                            placeholder='Зображення'
+                            className='form-input'
+                            onChange={(e) => setImage(e.target.files[0])}
+                        />
+                    </label>
+                </div>
+                {isLoadingImage === false ? (
+                    <div>
+                        Зображення завантажене
+                    </div>
+                ) : null}
+                {!createBtn ? (
+                    <button
+                        type='submit'
+                        className='btn btn-primary'
+                        onClick={handleSubmit}
+                    >
+                        Створити
+                    </button>
+                ) : (
+                    <button
+                        type='submit'
+                        className='btn btn-primary'
+                        onClick={handleSubmit}
+                    >
+                        Створити ще
+                    </button>
+                )}
             </form>
         </div>
     );

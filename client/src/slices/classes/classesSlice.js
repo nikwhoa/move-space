@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-param-reassign */
 /* eslint-disable consistent-return */
@@ -9,6 +10,8 @@ const initialState = {
     status: null,
     error: null,
     isLoading: true,
+    imageUrl: null,
+    isLoadingImage: true,
 };
 
 export const getClasses = createAsyncThunk('classes/getClasses', async () => {
@@ -30,12 +33,11 @@ export const createClass = createAsyncThunk(
                 classDescription,
                 classImage,
             });
-            console.log(data);
             return data;
         } catch (error) {
             console.log(error);
         }
-    },
+    }
 );
 
 export const deleteClass = createAsyncThunk(
@@ -47,7 +49,26 @@ export const deleteClass = createAsyncThunk(
         } catch (error) {
             console.log(error);
         }
-    },
+    }
+);
+
+export const uploadPicture = createAsyncThunk(
+    'classes/uploadPicture',
+    async (file) => {
+        const formData = new FormData();
+        formData.append('picture', file);
+
+        try {
+            const { data } = await axios.post(
+                'http://91.219.62.242:3002/',
+                formData,
+                { 'Content-Type': 'multipart/form-data' }
+            );
+            return data;
+        } catch (error) {
+            console.log(error);
+        }
+    }
 );
 
 export const classesSlice = createSlice({
@@ -56,7 +77,7 @@ export const classesSlice = createSlice({
     reducers: {
         removeClass: (state, action) => {
             state.classes = state.classes.filter(
-                (classes) => classes._id !== action.payload,
+                (classes) => classes._id !== action.payload
             );
             state.status = null;
         },
@@ -95,6 +116,19 @@ export const classesSlice = createSlice({
             state.status = action.payload.message;
         },
         [deleteClass.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+        },
+        [uploadPicture.pending]: (state) => {
+            state.isLoading = true;
+            state.status = null;
+        },
+        [uploadPicture.fulfilled]: (state, action) => {
+            state.status = action.payload.message;
+            state.imageUrl = action.payload.link;
+            state.isLoadingImage = state.imageUrl === null;
+        },
+        [uploadPicture.rejected]: (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
         },
