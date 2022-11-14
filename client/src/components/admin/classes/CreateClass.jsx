@@ -17,11 +17,13 @@ import './style.scss';
 const CreateClass = () => {
     const [className, setClassName] = useState('');
     const [classDescription, setClassDescription] = useState('');
-    const [classImage, setClassImage] = useState('');
     const [image, setImage] = useState(null);
     const [createBtn, setCreateBtn] = useState(false);
+    const [preview, setPreview] = useState(null);
+
     const { status } = useSelector((state) => state.classes);
     const { isLoadingImage } = useSelector((state) => state.classes);
+    const { imageUrl } = useSelector((state) => state.classes);
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -32,22 +34,30 @@ const CreateClass = () => {
         }
     }, [status, dispatch]);
 
+    if (image) {
+        dispatch(uploadPicture(image)).then(setImage(false));
+        setPreview(URL.createObjectURL(image));
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
         try {
             // eslint-disable-next-line no-undef
+
+            // dispatch(uploadPicture(image)).then(setCreateBtn(true));
+
             dispatch(
                 createClass({
                     className,
                     classDescription,
-                    classImage,
+                    classImage: imageUrl,
                 })
             );
-            dispatch(uploadPicture(image)).then(setCreateBtn(true));
-            // setClassName('');
-            // setClassDescription('');
-            // setClassImage('');
+            setClassName('');
+            setClassDescription('');
+            setImage(null);
+            setPreview(null);
         } catch (error) {
             throw new Error(error);
         }
@@ -88,34 +98,31 @@ const CreateClass = () => {
                 <div className='input-container'>
                     <label className='label'>
                         <input
-                            type='text'
-                            placeholder='Посилання на зображення'
-                            value={classImage}
-                            className='form-input'
-                            onChange={(e) => setClassImage(e.target.value)}
-                        />
-                    </label>
-                </div>
-                <div className='input-container'>
-                    <label className='label'>
-                        <input
                             type='file'
                             placeholder='Зображення'
                             className='form-input'
                             onChange={(e) => setImage(e.target.files[0])}
                         />
+                        {isLoadingImage === false ? (
+                            <span className='done'>&#9989;</span>
+                        ) : null}
                     </label>
                 </div>
-                {isLoadingImage === false ? (
-                    <div>
-                        Зображення завантажене
-                    </div>
-                ) : null}
+                <div>
+                    {preview ? (
+                        <img
+                            src={preview}
+                            className='uploaded-image'
+                            alt='preview'
+                        />
+                    ) : null}
+                </div>
                 {!createBtn ? (
                     <button
                         type='submit'
                         className='btn btn-primary'
                         onClick={handleSubmit}
+                        disabled={status !== 'Image has been uploaded'}
                     >
                         Створити
                     </button>
