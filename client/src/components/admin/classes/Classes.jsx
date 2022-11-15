@@ -65,7 +65,10 @@ function Classes() {
                                         </button>
                                     </td>
                                     <td>
-                                        <Link to={`edit/${item._id}`}>
+                                        <Link
+                                            state={item}
+                                            to={`edit/${item._id}`}
+                                        >
                                             <button
                                                 type='button'
                                                 className='btn btn-primary'

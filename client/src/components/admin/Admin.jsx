@@ -15,6 +15,7 @@ import './admin.scss';
 import Users from './users/Users';
 import Classes from './classes/Classes';
 import CreateClass from './classes/CreateClass';
+import Class from './classes/Class';
 
 const Admin = () => {
     const isAdmin = useSelector(checkIsAdmin);
@@ -72,8 +73,14 @@ const Admin = () => {
                                 element={<CreateUser />}
                             />
                             <Route path='/classes' element={<Classes />} />
-                            <Route path='/classes/create' element={<CreateClass />} />
-                            {/* <Route path='/classes/all' element={<AllClasses />} /> */}
+                            <Route
+                                path='/classes/create'
+                                element={<CreateClass />}
+                            />
+                            <Route
+                                path='/classes/edit/:id'
+                                element={<Class />}
+                            />
                             <Route path='/users' element={<Users />} />
                         </Routes>
                     </div>
