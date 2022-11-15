@@ -1,8 +1,9 @@
 /* eslint-disable max-len */
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './header.scss';
+import '../../styles/hamburgers.css';
 import { toast } from 'react-toastify';
 import {
     checkIsAuth,
@@ -12,6 +13,8 @@ import {
 } from '../../slices/auth/authSlice';
 
 const Header = () => {
+    const [showMenu, setShowMenu] = useState(false);
+
     const isAuth = useSelector(checkIsAuth);
     const isAdmin = useSelector(checkIsAdmin);
     let isTrainer = useSelector(checkIsTrainer) === 'trainer';
@@ -30,27 +33,58 @@ const Header = () => {
         toast('Ви вийшли з облікового запису');
     };
 
+    const showMenuHandler = () => {
+        if (window.innerWidth <= 768) {
+            setShowMenu(!showMenu);
+        }
+    };
+
     return (
-        <div className='sticky-wrapper'>
+        <div
+            className={`sticky-wrapper${
+                showMenu ? ' sticky-wrapper-open' : ''
+            }`}
+        >
             <header className='site-navbar py-4 js-sticky-header site-navbar-target'>
-                <div className='container-fluid'>
+                <div
+                    className={`container-fluid${
+                        showMenu ? ' no-padding' : ''
+                    }`}
+                >
                     <div className='d-flex align-items-center'>
-                        <div className='site-logo'>
+                        <div
+                            className={`site-logo${showMenu ? ' hidden' : ''}`}
+                        >
                             <Link to='/'>Move.Space</Link>
                         </div>
-                        <div className='ml-auto'>
+                        <div
+                            className={`ml-auto${
+                                showMenu ? ' margin-left-0' : ''
+                            }`}
+                        >
                             <nav
-                                className='site-navigation position-relative text-right'
+                                className={`site-navigation position-relative text-center${
+                                    showMenu ? ' show-main-menu' : ''
+                                }`}
                                 role='navigation'
                             >
-                                <ul className='site-menu main-menu js-clone-nav mr-auto d-none d-lg-block'>
+                                <ul
+                                    className={`site-menu main-menu mr-auto d-none d-lg-block${
+                                        showMenu ? ' menu-visible' : ''
+                                    }`}
+                                >
                                     <li>
-                                        <Link to='/' className='nav-link'>
+                                        <Link
+                                            onClick={showMenuHandler}
+                                            to='/'
+                                            className='nav-link'
+                                        >
                                             Головна
                                         </Link>
                                     </li>
                                     <li>
                                         <Link
+                                            onClick={showMenuHandler}
                                             to='/classes'
                                             className='nav-link'
                                         >
@@ -59,6 +93,7 @@ const Header = () => {
                                     </li>
                                     <li>
                                         <Link
+                                            onClick={showMenuHandler}
                                             to='/schedule'
                                             className='nav-link'
                                         >
@@ -67,6 +102,7 @@ const Header = () => {
                                     </li>
                                     <li>
                                         <Link
+                                            onClick={showMenuHandler}
                                             to='/trainers'
                                             className='nav-link'
                                         >
@@ -77,6 +113,7 @@ const Header = () => {
                                     {isAuth && showAdmin ? (
                                         <li>
                                             <Link
+                                                onClick={showMenuHandler}
                                                 to='/admin'
                                                 className='nav-link'
                                             >
@@ -92,12 +129,12 @@ const Header = () => {
                                 className='site-navigation position-relative text-right'
                                 role='navigation'
                             >
-                                <ul className='site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block'>
+                                <ul className='main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block'>
                                     <li className='cta'>
                                         {!isAuth ? (
                                             <Link
                                                 to='/login'
-                                                className='nav-link'
+                                                className='nav-link login-btn'
                                             >
                                                 <span className='rounded border border-primary'>
                                                     Вхід
@@ -117,14 +154,18 @@ const Header = () => {
                                     </li>
                                 </ul>
                             </nav>
-
-                            {/* <a
-                                href='#'
-                                className='d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right'
-                            >
-                                <span className='icon-menu h3'></span>
-                            </a> */}
                         </div>
+                        <button
+                            className={`hamburger hamburger--spin${
+                                showMenu ? ' is-active' : ''
+                            }`}
+                            type='button'
+                            onClick={showMenuHandler}
+                        >
+                            <span className='hamburger-box'>
+                                <span className='hamburger-inner' />
+                            </span>
+                        </button>
                     </div>
                 </div>
             </header>

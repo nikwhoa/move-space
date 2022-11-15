@@ -4,7 +4,9 @@ body {
     color: gray;
     font-weight: 300;
     font-size: 1.1rem;
-    font-family: "Muli", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: 'Muli', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
 #main-video {
@@ -26,7 +28,6 @@ body {
     overflow: hidden;
     opacity: 1;
     background-image: none;
-
 }
 
 .py-4 {
@@ -71,7 +72,7 @@ body {
 }
 
 a {
-    transition: .3s all ease;
+    transition: 0.3s all ease;
     text-decoration: none;
     background-color: transparent;
 }
@@ -203,7 +204,6 @@ section {
     max-width: 100%;
 }
 
-
 .site-section {
     padding: 2.5em 0;
 }
@@ -223,8 +223,8 @@ section {
     margin-left: -15px;
 }
 
-[class^="icon-"],
-[class*=" icon-"] {
+[class^='icon-'],
+[class*=' icon-'] {
     font-family: 'icomoon' !important;
     speak: none;
     font-style: normal;
@@ -259,9 +259,11 @@ section {
     border-width: 2px;
     border-radius: 0.25rem;
     line-height: 1.5;
-    padding: .4rem .6rem;
+    padding: 0.4rem 0.6rem;
     border: 1px solid transparent;
-    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+        border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+        -webkit-box-shadow 0.15s ease-in-out;
 }
 
 .pl-4,
@@ -301,7 +303,6 @@ section {
 }
 
 .img-shadow {
-
     box-shadow: 10px 10px 0 0 #48d494;
 }
 
@@ -311,15 +312,12 @@ section {
 }
 
 .justify-content-center {
-
     justify-content: center !important;
 }
 
 .nav-tabs .nav-item {
     margin-bottom: -1px;
 }
-
-
 
 .tab-list-custom .nav-link.active {
     background: #48d494;
@@ -382,7 +380,7 @@ a {
     background-color: transparent;
 }
 
-.table-striped tbody tr:nth-of-type(2n+1) {
+.table-striped tbody tr:nth-of-type(2n + 1) {
     background-color: rgba(0, 0, 0, 0.05);
 }
 
@@ -432,7 +430,7 @@ a {
     margin-left: -35px;
 }
 
-large-gutters>[class*="col-"] {
+large-gutters > [class*='col-'] {
     padding-right: 35px;
     padding-left: 35px;
 }
@@ -471,7 +469,7 @@ h6 {
 }
 
 .opacity-7 {
-    opacity: .7;
+    opacity: 0.7;
 }
 
 a:hover {
@@ -512,7 +510,7 @@ a:hover {
 
 .cta a span:hover {
     background-color: #48d494;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .nav-link {
@@ -585,4 +583,37 @@ form {
     &:hover {
         color: #fff;
     }
+}
+.login-btn {
+    padding: 0;
+}
+
+.menu-visible {
+    visibility: visible !important;
+    height: initial !important;
+    width: 100% !important;
+    display: flex;
+    flex-direction: column;
+}
+.site-navigation {
+    display: none;
+}
+.site-logo.hidden {
+    display: none !important;
+}
+.show-main-menu {
+    display: block !important;
+    text-align: left !important;
+    width: 100%;
+
+}
+.no-padding {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.margin-left-0 {
+    margin-left: 0 !important;
+}
+.sticky-wrapper-open {
+    height: 260px !important;
 }

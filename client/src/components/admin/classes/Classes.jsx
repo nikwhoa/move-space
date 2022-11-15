@@ -29,55 +29,57 @@ function Classes() {
     };
 
     return (
-        <div>
-            <Link to='create'>Додати тренування</Link>
+        <div className='container'>
+            <div className='col-lg-12'>
+                <Link to='create'>Додати тренування</Link>
 
-            <h1>Тренування</h1>
-            <table className='table table-bordered table-custom table-striped'>
-                <thead>
-                    <tr>
-                        <th scope='col'>Назва</th>
-                        <th scope='col'>Опис</th>
-                        <th scope='col'>Видалити</th>
-                        <th scope='col'>Редагувати</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {isLoading === true ? (
+                <h1>Тренування</h1>
+                <table className='table table-bordered table-custom table-striped'>
+                    <thead>
                         <tr>
-                            <td colSpan={4}>
-                                <LoadingSpinner />
-                            </td>
+                            <th scope='col'>Назва</th>
+                            <th scope='col'>Опис</th>
+                            <th scope='col'>Видалити</th>
+                            <th scope='col'>Редагувати</th>
                         </tr>
-                    ) : (
-                        classes.map((item) => (
-                            <tr key={item._id}>
-                                <td>{item.className}</td>
-                                <td>{item.classDescription}</td>
-                                <td>
-                                    <button
-                                        type='button'
-                                        className='btn btn-danger'
-                                        onClick={() => remove(item._id)}
-                                    >
-                                        Видалити
-                                    </button>
-                                </td>
-                                <td>
-                                    <Link to={`edit/${item._id}`}>
-                                        <button
-                                            type='button'
-                                            className='btn btn-primary'
-                                        >
-                                            Редагувати
-                                        </button>
-                                    </Link>
+                    </thead>
+                    <tbody>
+                        {isLoading === true ? (
+                            <tr>
+                                <td colSpan={4}>
+                                    <LoadingSpinner />
                                 </td>
                             </tr>
-                        ))
-                    )}
-                </tbody>
-            </table>
+                        ) : (
+                            classes.map((item) => (
+                                <tr key={item._id}>
+                                    <td>{item.className}</td>
+                                    <td>{item.classDescription}</td>
+                                    <td>
+                                        <button
+                                            type='button'
+                                            className='btn btn-danger'
+                                            onClick={() => remove(item._id)}
+                                        >
+                                            Видалити
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <Link to={`edit/${item._id}`}>
+                                            <button
+                                                type='button'
+                                                className='btn btn-primary'
+                                            >
+                                                Редагувати
+                                            </button>
+                                        </Link>
+                                    </td>
+                                </tr>
+                            ))
+                        )}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 }

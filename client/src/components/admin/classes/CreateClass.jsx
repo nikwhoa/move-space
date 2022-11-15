@@ -103,7 +103,7 @@ const CreateClass = () => {
                             className='form-input'
                             onChange={(e) => setImage(e.target.files[0])}
                         />
-                        {isLoadingImage === false ? (
+                        {!isLoadingImage ? (
                             <span className='done'>&#9989;</span>
                         ) : null}
                     </label>

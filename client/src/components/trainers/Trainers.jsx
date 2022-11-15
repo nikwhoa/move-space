@@ -37,7 +37,7 @@ const Trainers = () => {
                 <div className='row m-t-1 large-gutters'>
                     {trainers.map((trainer) => {
                         return (
-                            <Fragment key={trainer.id}>
+                            <Fragment key={trainer.id + trainer.name}>
                                 <div className='col-md-6 person col-lg-4 mb-4 mb-lg-0'>
                                     <img
                                         src={trainer.image.src}

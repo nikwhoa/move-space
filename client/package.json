@@ -6,6 +6,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.5",
     "axios": "^0.27.2",
+    "cyrillic-to-translit-js": "^3.2.1",
     "framer-motion": "^7.2.1",
     "generate-password": "^1.7.0",
     "prop-types": "^15.8.1",

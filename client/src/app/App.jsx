@@ -26,15 +26,15 @@ const App = () => {
         <div className='site-wrap'>
             <Header />
             <AnimatePresence>
-                <Routes location={useLocation()} key={useLocation().pathname}>
-                    <Route path='/' element={<MainScreen />} />
-                    <Route path='/classes' element={<Classes />} />
-                    <Route path='/classes/class/:name' element={<Class />} />
-                    <Route path='/schedule' element={<Schedule />} />
-                    <Route path='/trainers' element={<Trainers />} />
-                    <Route path='/register' element={<RegisterPage />} />
-                    <Route path='/login' element={<LoginPage />} />
-                    <Route path='/admin/*' element={<Admin />} />
+                <Routes location={useLocation()} key='main-route'>
+                    <Route path='/' element={<MainScreen />} key='mainscreen' />
+                    <Route path='/classes' element={<Classes />} key='classes' />
+                    <Route path='/classes/class/:className' element={<Class />} key='classes/class' />
+                    <Route path='/schedule' element={<Schedule />} key='schedule' />
+                    <Route path='/trainers' element={<Trainers />} key='trainers' />
+                    <Route path='/register' element={<RegisterPage />} key='register' />
+                    <Route path='/login' element={<LoginPage />} key='login' />
+                    <Route path='/admin/*' element={<Admin />} key='admin' />
                 </Routes>
                 <ToastContainer
                     position='bottom-center'
