@@ -58,16 +58,28 @@ export const uploadPicture = createAsyncThunk(
         const formData = new FormData();
         formData.append('picture', file);
 
-        try {
-            const { data } = await axios.post(
-                'http://91.219.62.242:3002/',
-                formData,
-                { 'Content-Type': 'multipart/form-data' }
-            );
-            return data;
-        } catch (error) {
-            console.log(error);
+        if (file.type === 'image/webp' || file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png') {
+            if (file.size < 5000000) {
+                try {
+                    const { data } = await axios.post(
+                        'http://91.219.62.242:3002/',
+                        formData,
+                        { 'Content-Type': 'multipart/form-data' }
+                    );
+                    return data;
+                } catch (error) {
+                    console.log(error);
+                }
+            }
+
+            return {
+                message: 'Зображення важить надто багато'
+            };
         }
+
+        return {
+            message: 'Не вірний формат зображення'
+        };
     }
 );
 
@@ -131,6 +143,7 @@ export const classesSlice = createSlice({
         [uploadPicture.rejected]: (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
+            state.status = action.payload.message;
         },
     },
 });
