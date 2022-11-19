@@ -7,7 +7,7 @@ const MainScreen = () => {
     return (
         <>
             <video autoPlay muted loop id='main-video'>
-                <source src='http://91.219.62.242:3002/images/main-video.mp4' />
+                <source src='https://images.norenko.net.ua/public/main-video.mp4' />
             </video>
             <div
                 className='intro-section'

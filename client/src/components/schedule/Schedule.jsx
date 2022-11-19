@@ -16,13 +16,6 @@ const Schedule = () => {
                 <div className='row'>
                     <div className='col-lg-6 mb-5'>
                         <h2 className='section-title'>Розклад</h2>
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. Rem possimus distinctio ex. Natus totam
-                            voluptatibus animi aspernatur ducimus quas obcaecati
-                            mollitia quibusdam temporibus culpa dolore molestias
-                            blanditiis consequuntur sunt nisi.
-                        </p>
                     </div>
                 </div>
 
@@ -135,7 +128,7 @@ const Schedule = () => {
                                 <table className='table table-bordered table-custom table-striped '>
                                     <tbody>
                                         <tr>
-                                            <td>Gym</td>
+                                            <td>Силове тренування</td>
                                             <td>8:00am - 10:00am</td>
                                             <td>John Doe</td>
                                             <td className='text-center'>
@@ -148,7 +141,7 @@ const Schedule = () => {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Meditation</td>
+                                            <td>Кардіо</td>
                                             <td>10:00am - 10:30am</td>
                                             <td>James Holmes</td>
                                             <td className='text-center'>
@@ -161,7 +154,7 @@ const Schedule = () => {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Weight Lifting</td>
+                                            <td>Аеробіка</td>
                                             <td>1:00pm - 2:30pm</td>
                                             <td>Ben Smith</td>
                                             <td className='text-center'>
@@ -174,7 +167,7 @@ const Schedule = () => {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Crossfit</td>
+                                            <td>Скидаємо вагу</td>
                                             <td>3:00pm - 3:45pm</td>
                                             <td>Craig Peters</td>
                                             <td className='text-center'>
@@ -187,7 +180,20 @@ const Schedule = () => {
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Aerobics</td>
+                                            <td>Нарощуємо м’язову масу</td>
+                                            <td>5:00pm - 5:30pm</td>
+                                            <td>Paul Green</td>
+                                            <td className='text-center'>
+                                                <a
+                                                    href='#contact-section'
+                                                    className='smoothscroll'
+                                                >
+                                                    Join Now
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Формуємо рельєф</td>
                                             <td>5:00pm - 5:30pm</td>
                                             <td>Paul Green</td>
                                             <td className='text-center'>

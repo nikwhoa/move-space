@@ -70,8 +70,8 @@ const Classes = () => {
                                     <SwiperSlide key={item._id}>
                                         <Link
                                             className='work-thumb'
-                                            state={item}
-                                            to={`/classes/class/${CyrillicToTranslit(
+                                            key={item._id}
+                                            to={`class/${CyrillicToTranslit(
                                                 { preset: 'uk' }
                                             )
                                                 .transform(item.className, '-')
@@ -82,7 +82,7 @@ const Classes = () => {
                                             </div>
                                             <img
                                                 src={item.classImage}
-                                                alt='slide 4'
+                                                alt={item.className}
                                                 className='img-fluid'
                                             />
                                         </Link>

@@ -28,11 +28,31 @@ const App = () => {
             <AnimatePresence>
                 <Routes location={useLocation()} key='main-route'>
                     <Route path='/' element={<MainScreen />} key='mainscreen' />
-                    <Route path='/classes' element={<Classes />} key='classes' />
-                    <Route path='/classes/class/:className' element={<Class />} key='classes/class' />
-                    <Route path='/schedule' element={<Schedule />} key='schedule' />
-                    <Route path='/trainers' element={<Trainers />} key='trainers' />
-                    <Route path='/register' element={<RegisterPage />} key='register' />
+                    <Route
+                        path='/classes/*'
+                        element={<Classes />}
+                        key='classes'
+                    />
+                    <Route
+                        path='/classes/class/:className'
+                        element={<Class />}
+                        key='class'
+                    />
+                    <Route
+                        path='/schedule'
+                        element={<Schedule />}
+                        key='schedule'
+                    />
+                    <Route
+                        path='/trainers'
+                        element={<Trainers />}
+                        key='trainers'
+                    />
+                    <Route
+                        path='/register'
+                        element={<RegisterPage />}
+                        key='register'
+                    />
                     <Route path='/login' element={<LoginPage />} key='login' />
                     <Route path='/admin/*' element={<Admin />} key='admin' />
                 </Routes>

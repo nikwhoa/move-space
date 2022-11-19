@@ -17,6 +17,10 @@
         "no-trailing-spaces": "off",
         "jsx-quotes": ["error", "prefer-single"],
         "react/jsx-indent-props": "off",
-        "arrow-body-style": "off"
+        "arrow-body-style": "off",
+        "no-console": "off",
+        "max-len": "off",
+        "no-unused-vars": "off",
+        "implicit-arrow-linebreak": "off"
     }
 }
