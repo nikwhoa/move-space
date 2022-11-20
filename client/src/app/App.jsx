@@ -29,7 +29,7 @@ const App = () => {
                 <Routes location={useLocation()} key='main-route'>
                     <Route path='/' element={<MainScreen />} key='mainscreen' />
                     <Route
-                        path='/classes/*'
+                        path='/classes'
                         element={<Classes />}
                         key='classes'
                     />

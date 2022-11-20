@@ -5,30 +5,33 @@ import { motion } from 'framer-motion';
 import './class.scss';
 import CyrillicToTranslit from 'cyrillic-to-translit-js';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import { getClasses } from '../../slices/classes/classesSlice';
 import LoadingSpinner from '../../utils/LoadingSpinner';
-// import LoadingSpinner from '../../utils/LoadingSpinner';
 
 const Class = () => {
+    const { isLoading } = useSelector((state) => state.classes);
+    const a = useParams();
+    // TODO: when createing training i need to set name for matching exec train
+    console.log(a);
     const dispatch = useDispatch();
 
     const training = useSelector((state) => state.classes.classes);
-    const { isLoading } = useSelector((state) => state.classes);
 
-    const trainPathName = CyrillicToTranslit({ preset: 'uk' }).reverse(
-        window.location.pathname
-    );
+    // const trainPathName = CyrillicToTranslit({ preset: 'uk' }).reverse(
+    //     window.location.pathname
+    // );
 
-    const trainName = trainPathName.slice(trainPathName.lastIndexOf('/') + 1);
+    // const trainName = trainPathName.slice(trainPathName.lastIndexOf('/') + 1);
 
-    const titleCase = (str) =>
-        `${str[0].toUpperCase()}${str.slice(1).toLowerCase()}`;
+    // const titleCase = (str) =>
+    //     `${str[0].toUpperCase()}${str.slice(1).toLowerCase()}`;
 
     const trainToDisplay = training.filter(
-        (element) => element.className === titleCase(trainName)
+        (element) => element.classUrl === a.className
     );
 
-    console.log(trainToDisplay);
+    // console.log(trainToDisplay);
 
     useEffect(() => {
         dispatch(getClasses());

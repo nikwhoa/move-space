@@ -10,12 +10,13 @@ export const getClasses = async (req, res) => {
 };
 
 export const createClass = async (req, res) => {
-    const { className, classDescription, classImage } = req.body;
+    const { className, classDescription, classImage, classUrl } = req.body;
 
     const newClass = new Classes({
         className,
         classDescription,
         classImage,
+        classUrl,
     });
 
     try {

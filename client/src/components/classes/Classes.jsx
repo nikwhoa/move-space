@@ -1,7 +1,8 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-underscore-dangle */
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
 import { Navigation, A11y, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { motion } from 'framer-motion';
@@ -12,6 +13,7 @@ import 'swiper/css/bundle';
 import './classes.scss';
 import { getClasses } from '../../slices/classes/classesSlice';
 import LoadingSpinner from '../../utils/LoadingSpinner';
+import Class from './Class';
 
 const Classes = () => {
     const dispatch = useDispatch();
@@ -71,11 +73,8 @@ const Classes = () => {
                                         <Link
                                             className='work-thumb'
                                             key={item._id}
-                                            to={`class/${CyrillicToTranslit(
-                                                { preset: 'uk' }
-                                            )
-                                                .transform(item.className, '-')
-                                                .toLowerCase()}`}
+                                            state='test1'
+                                            to={`class/${item.classUrl}`}
                                         >
                                             <div className='work-text'>
                                                 <h3>{item.className}</h3>

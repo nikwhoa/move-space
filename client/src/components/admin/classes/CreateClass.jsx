@@ -8,6 +8,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import CyrillicToTranslit from 'cyrillic-to-translit-js';
 import {
     createClass,
     uploadPicture,
@@ -46,12 +47,15 @@ const CreateClass = () => {
             // eslint-disable-next-line no-undef
 
             // dispatch(uploadPicture(image)).then(setCreateBtn(true));
+            const url = CyrillicToTranslit({ preset: 'uk' }).transform(className);
 
+            console.log(url);
             dispatch(
                 createClass({
                     className,
                     classDescription,
                     classImage: imageUrl,
+                    classUrl: url.replace(/ /g, '-')
                 })
             );
             setClassName('');

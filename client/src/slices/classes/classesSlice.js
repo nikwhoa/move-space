@@ -1,3 +1,4 @@
+/* eslint-disable object-curly-newline */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-param-reassign */
@@ -26,12 +27,13 @@ export const getClasses = createAsyncThunk('classes/getClasses', async () => {
 
 export const createClass = createAsyncThunk(
     'classes/createClass',
-    async ({ className, classDescription, classImage }) => {
+    async ({ className, classDescription, classImage, classUrl }) => {
         try {
             const { data } = await axios.post('/classes/create', {
                 className,
                 classDescription,
                 classImage,
+                classUrl
             });
             return data;
         } catch (error) {
