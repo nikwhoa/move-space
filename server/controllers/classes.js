@@ -39,4 +39,4 @@ export const deleteClass = async (req, res) => {
     } catch (e) {
         res.json({ message: 'There is some mistake. More info: ' + e });
     }
-}
+};

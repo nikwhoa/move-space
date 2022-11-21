@@ -11,27 +11,14 @@ import LoadingSpinner from '../../utils/LoadingSpinner';
 
 const Class = () => {
     const { isLoading } = useSelector((state) => state.classes);
-    const a = useParams();
-    // TODO: when createing training i need to set name for matching exec train
-    console.log(a);
+
     const dispatch = useDispatch();
 
     const training = useSelector((state) => state.classes.classes);
 
-    // const trainPathName = CyrillicToTranslit({ preset: 'uk' }).reverse(
-    //     window.location.pathname
-    // );
-
-    // const trainName = trainPathName.slice(trainPathName.lastIndexOf('/') + 1);
-
-    // const titleCase = (str) =>
-    //     `${str[0].toUpperCase()}${str.slice(1).toLowerCase()}`;
-
     const trainToDisplay = training.filter(
-        (element) => element.classUrl === a.className
+        (element) => element.classUrl === useParams().className
     );
-
-    // console.log(trainToDisplay);
 
     useEffect(() => {
         dispatch(getClasses());

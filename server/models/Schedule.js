@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const scheduleSchema = new mongoose.Schema(
   {
@@ -7,14 +7,16 @@ const scheduleSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
-    schedule: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "SchedulePosts",
-      },
-    ],
+    TrainTime: {
+      type: Date,
+      required: true,
+    },
+    users: {
+      type: Array,
+    },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
-export default mongoose.model("Schedule", scheduleSchema);
+
+export default mongoose.model('Schedule', scheduleSchema);

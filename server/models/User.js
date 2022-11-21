@@ -27,10 +27,10 @@ const userSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        post: [
+        schedule: [
             {
                 type: mongoose.Schema.Types.ObjectId,
-                ref: 'Post',
+                ref: 'Schedule',
             },
         ],
     },

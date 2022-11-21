@@ -6,6 +6,7 @@ import cors from 'cors';
 import authRoute from './routes/auth.js';
 import usersRoute from './routes/users.js';
 import classesRoute from './routes/classes.js';
+import scheduleRoute from './routes/schedule.js';
 
 const app = express();
 dotenv.config();
@@ -25,6 +26,8 @@ app.get('/', (req, res) => {
 app.use('/api/auth', authRoute);
 app.use('/api/users', usersRoute);
 app.use('/api/classes', classesRoute);
+app.use('/api/schedule', scheduleRoute);
+
 
 async function start() {
     try {
