@@ -1,4 +1,5 @@
-/* eslint-disable object-curly-newline */
+// TODO: delete removeClass reducer
+/* eslint-disable object-curly-newline,operator-linebreak */
 /* eslint-disable comma-dangle */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-param-reassign */
@@ -33,7 +34,7 @@ export const createClass = createAsyncThunk(
                 className,
                 classDescription,
                 classImage,
-                classUrl
+                classUrl,
             });
             return data;
         } catch (error) {
@@ -54,13 +55,37 @@ export const deleteClass = createAsyncThunk(
     }
 );
 
+export const updateClass = createAsyncThunk(
+    'classes/updateClass',
+    async ({ className, classDescription, classImage, classID, classUrl }) => {
+        try {
+            const response = await axios.post(`/classes/update/${classID}`, {
+                classID,
+                className,
+                classDescription,
+                classImage,
+                classUrl
+            });
+
+            return response.data;
+        } catch (e) {
+            console.log(e);
+        }
+    }
+);
+
 export const uploadPicture = createAsyncThunk(
     'classes/uploadPicture',
     async (file) => {
         const formData = new FormData();
         formData.append('picture', file);
 
-        if (file.type === 'image/webp' || file.type === 'image/jpeg' || file.type === 'image/jpg' || file.type === 'image/png') {
+        if (
+            file.type === 'image/webp' ||
+            file.type === 'image/jpeg' ||
+            file.type === 'image/jpg' ||
+            file.type === 'image/png'
+        ) {
             if (file.size < 5000000) {
                 try {
                     const { data } = await axios.post(
@@ -75,12 +100,12 @@ export const uploadPicture = createAsyncThunk(
             }
 
             return {
-                message: 'Зображення важить надто багато'
+                message: 'Зображення важить надто багато',
             };
         }
 
         return {
-            message: 'Не вірний формат зображення'
+            message: 'Не вірний формат зображення',
         };
     }
 );
@@ -134,7 +159,7 @@ export const classesSlice = createSlice({
             state.error = action.payload;
         },
         [uploadPicture.pending]: (state) => {
-            state.isLoading = true;
+            // state.isLoading = true;
             state.status = null;
         },
         [uploadPicture.fulfilled]: (state, action) => {
@@ -143,6 +168,18 @@ export const classesSlice = createSlice({
             state.isLoadingImage = state.imageUrl === null;
         },
         [uploadPicture.rejected]: (state, action) => {
+            state.isLoading = false;
+            state.error = action.payload;
+            state.status = action.payload.message;
+        },
+        [updateClass.pending]: (state) => {
+            state.isLoading = true;
+        },
+        [updateClass.fulfilled]: (state, action) => {
+            state.isLoading = false;
+            state.status = action.payload.message;
+        },
+        [updateClass.rejected]: (state, action) => {
             state.isLoading = false;
             state.error = action.payload;
             state.status = action.payload.message;

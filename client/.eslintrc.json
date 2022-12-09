@@ -21,6 +21,14 @@
         "no-console": "off",
         "max-len": "off",
         "no-unused-vars": "off",
-        "implicit-arrow-linebreak": "off"
+        "implicit-arrow-linebreak": "off",
+        "jsx-one-expression-per-line": "off",
+        "react/jsx-one-expression-per-line": "off",
+        "spaced-comment": "off",
+        "no-underscore-dangle": "off",
+        "comma-dangle": "off",
+        "react/jsx-curly-newline": "off",
+        "jsx-a11y/label-has-associated-control": "off",
+        "consistent-return": "off"
     }
 }

@@ -20,5 +20,10 @@
         "indent": "off",
         "no-console": "off",
         "prefer-default-export": "off",
+        "comma-dangle": "off",
+        "max-statements-per-line": "off",
+        "operator-linebreak": "off",
+        "import/extensions": "off",
+        "object-curly-newline": "off"
     }
 }

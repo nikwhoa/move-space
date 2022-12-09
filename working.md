@@ -1,8 +1,5 @@
-# Working on classes
- - [ ] frontend for classes
- - [ ] create functional for update training
-
-
+add user to scheduleItem
+editing schedule item from admin-page
 
 
  <!-- 	"username": "admin",

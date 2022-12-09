@@ -1,9 +1,4 @@
 // TODO: do better image uploading status, validation and if geting an error
-/* eslint-disable no-unused-vars */
-/* eslint-disable comma-dangle */
-/* eslint-disable react/jsx-curly-newline */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -27,7 +22,6 @@ const CreateClass = () => {
     const { imageUrl } = useSelector((state) => state.classes);
 
     const dispatch = useDispatch();
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (status) {
@@ -44,12 +38,8 @@ const CreateClass = () => {
         e.preventDefault();
 
         try {
-            // eslint-disable-next-line no-undef
-
-            // dispatch(uploadPicture(image)).then(setCreateBtn(true));
             const url = CyrillicToTranslit({ preset: 'uk' }).transform(className);
 
-            console.log(url);
             dispatch(
                 createClass({
                     className,

@@ -5,7 +5,7 @@ export const getClasses = async (req, res) => {
         const classes = await Classes.find();
         res.json(classes);
     } catch (e) {
-        res.json({ message: 'There is some mistake. More info: ' + e });
+        res.json({ message: `There is some mistake. More info: ${e}` });
     }
 };
 
@@ -26,7 +26,7 @@ export const createClass = async (req, res) => {
             message: 'Тренування створено успішно',
         });
     } catch (e) {
-        res.json({ message: 'There is some mistake. More info: ' + e });
+        res.json({ message: `There is some mistake. More info: ${e}` });
     }
 };
 
@@ -37,6 +37,25 @@ export const deleteClass = async (req, res) => {
         await Classes.findByIdAndDelete(id);
         res.json({ message: 'Тренування успішно видалено' });
     } catch (e) {
-        res.json({ message: 'There is some mistake. More info: ' + e });
+        res.json({ message: `There is some mistake. More info: ${e}` });
+    }
+};
+
+export const updateClass = async (req, res) => {
+    const { classID, className, classDescription, classImage, classUrl } =
+        req.body;
+    try {
+        await Classes.updateOne(
+            { _id: classID },
+            {
+                className,
+                classDescription,
+                classImage,
+                classUrl,
+            }
+        );
+        res.json({ message: 'Тренування успішно змінено' });
+    } catch (e) {
+        console.log(e);
     }
 };

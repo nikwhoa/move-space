@@ -1,9 +1,4 @@
-/* eslint-disable react/jsx-curly-newline */
-/* eslint-disable implicit-arrow-linebreak */
-/* eslint-disable comma-dangle */
 /* eslint-disable no-shadow */
-/* eslint-disable import/no-named-as-default */
-/* eslint-disable no-underscore-dangle */
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -17,12 +12,13 @@ import ChangePasswordPopUp from './ChangePasswordPopUp';
 import './users.scss';
 
 const Users = () => {
-    const users = useSelector((state) => state.users.users);
-    const { isLoading } = useSelector((state) => state.users.loading);
-    const status = useSelector((state) => state.users.status);
     const [isShowPopUp, setShowPopUp] = useState(false);
     const [id, setId] = useState(null);
     const [username, setUsername] = useState('');
+
+    const users = useSelector((state) => state.users.users);
+    const status = useSelector((state) => state.users.status);
+    const { isLoading } = useSelector((state) => state.users.loading);
 
     const dispatch = useDispatch();
 

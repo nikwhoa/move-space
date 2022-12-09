@@ -2,28 +2,21 @@ import Schedule from '../models/Schedule.js';
 import User from '../models/User.js';
 
 export const createSchedule = async (req, res) => {
-    const { scheduleItem, TrainTime } = req.body;
+    const { scheduleItem, TrainTime, trainer } = req.body;
 
+    console.log(req.body);
     try {
         const newSchedule = new Schedule({
             scheduleItem,
             TrainTime,
-            user: req.userId,
+            trainer,
         });
-
-        // newSchedule.user.save((err, savedSchedule) => {
-        //     if (err) {
-        //         console.log(err);
-        //         return res.status(500).json(err);
-        //     }
-        //     return res.status(200).json(savedSchedule);
-        // });
 
         await newSchedule.save();
 
         res.json({
             newSchedule,
-            message: 'Реєстрація пройшла успішно',
+            message: 'Тренування додано до розкладу',
         });
     } catch (e) {
         res.json({
@@ -44,6 +37,20 @@ export const getSchedule = async (req, res) => {
         });
     }
 };
+
+export const deleteSchedule = async (req, res) => {
+    try {
+        const schedule = await Schedule.findByIdAndDelete(req.params.id);
+        res.json({
+            schedule,
+            message: 'Тренування видалено з розкладу',
+        });
+    } catch (err) {
+        res.json({
+            message: 'Під час видалення сталася помилка',
+        });
+    }
+}
 
 export const linkSchedule = async (req, res) => {
     try {

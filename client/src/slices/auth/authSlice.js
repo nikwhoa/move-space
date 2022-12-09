@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable object-curly-newline */
 /* eslint-disable comma-dangle */
 /* eslint-disable consistent-return */
@@ -145,6 +146,7 @@ export const authSlice = createSlice({
 export const checkIsAuth = (state) => Boolean(state.auth.token);
 export const checkIsAdmin = (state) => Boolean(state.auth.isAdmin);
 export const checkIsTrainer = (state) => state.auth.role;
+export const getTrainerID = (state) => state.auth.user;
 
 export const { logout } = authSlice.actions;
 

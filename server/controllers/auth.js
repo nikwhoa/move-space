@@ -140,7 +140,9 @@ export const removeUser = async (req, res) => {
 export const changePassword = async (req, res) => {
     const password = req.body.id.password;
     const id = req.body.id.id;
+
     // TODO: think about how to make it more secure. Maybe hash password in frontend
+    // i guess i did it already. wrong todo maybe
 
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
@@ -148,4 +150,4 @@ export const changePassword = async (req, res) => {
     await User.updateOne({ _id: id }, { password: hash });
 
     res.json({ message: 'Пароль змінено' });
-}
+};

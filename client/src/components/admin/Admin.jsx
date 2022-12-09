@@ -16,6 +16,9 @@ import Users from './users/Users';
 import Classes from './classes/Classes';
 import CreateClass from './classes/CreateClass';
 import Class from './classes/Class';
+import CreateSchedule from './schedule/CreateSchedule';
+import Schedule from './schedule/Schedule';
+import EditSchedule from './schedule/EditSchedule';
 
 const Admin = () => {
     const isAdmin = useSelector(checkIsAdmin);
@@ -59,7 +62,7 @@ const Admin = () => {
                                 </li>
                             ) : null}
                             <li>
-                                <Link to='create-schedule'>Додати розклад</Link>
+                                <Link to='schedule'>Розклад</Link>
                             </li>
                             {!isTrainer ? (
                                 <li>
@@ -82,6 +85,15 @@ const Admin = () => {
                                 element={<Class />}
                             />
                             <Route path='/users' element={<Users />} />
+                            <Route path='/schedule' element={<Schedule />} />
+                            <Route
+                                path='/schedule/create-schedule'
+                                element={<CreateSchedule />}
+                            />
+                            <Route
+                                path='/schedule/edit/:id'
+                                element={<EditSchedule />}
+                            />
                         </Routes>
                     </div>
                 </div>

@@ -1,5 +1,3 @@
-/* eslint-disable comma-dangle */
-/* eslint-disable linebreak-style */
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './class.scss';

@@ -2,10 +2,15 @@
     margin: 2rem auto;
     width: 70%;
     display: block;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 4px solid rgba(74, 172, 127, 0.34);
     padding-bottom: 1rem;
     li {
         display: inline;
         padding-left: 1rem;
+    }
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
     }
 }

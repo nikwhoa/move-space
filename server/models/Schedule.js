@@ -11,6 +11,10 @@ const scheduleSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
+    trainer: {
+      type: String,
+      required: true,
+    },
     users: {
       type: Array,
     },
