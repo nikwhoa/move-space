@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 // TODO: click outside popup
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';

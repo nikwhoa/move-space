@@ -1,5 +1,10 @@
 import { Router } from 'express';
-import { getSchedule, createSchedule, linkSchedule, deleteSchedule } from '../controllers/schedule.js';
+import {
+  getSchedule,
+  createSchedule,
+  linkSchedule,
+  deleteSchedule,
+} from '../controllers/schedule.js';
 
 const router = new Router();
 

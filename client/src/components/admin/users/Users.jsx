@@ -26,6 +26,7 @@ const Users = () => {
         dispatch(deleteUsername(id));
         dispatch(removeUser(id));
     };
+
     const changePassword = (id, name) => {
         setShowPopUp(!isShowPopUp);
         setId(id);

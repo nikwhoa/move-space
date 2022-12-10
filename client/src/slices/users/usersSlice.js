@@ -13,7 +13,6 @@ const initialState = {
 export const getUsers = createAsyncThunk('users/get', async () => {
     try {
         const { data } = await axios.get('/users/get'); // http://localhost:5100/api/users/get
-        // console.log(data);
         return data;
     } catch (error) {
         throw new Error(error);
@@ -75,8 +74,9 @@ export const usersSlice = createSlice({
             state.loading = false;
             state.users = action.payload;
         },
-        [getUsers.rejected]: (state) => {
+        [getUsers.rejected]: (state, action) => {
             state.loading = false;
+            state.status = action.payload.message;
         },
         [removeUser.pending]: (state) => {
             state.isLoading = true;
