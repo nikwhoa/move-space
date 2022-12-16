@@ -1,5 +1,4 @@
-add user to scheduleItem
-editing schedule item from admin-page
+editing schedule item from admin-page (name, time, day and delete users)
 
 
  <!-- 	"username": "admin",

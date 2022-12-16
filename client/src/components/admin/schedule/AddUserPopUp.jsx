@@ -31,7 +31,10 @@ const AddUserPopUp = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(linkSchedule({ userId: chosenUser, scheduleId }));
+    setChosenUser(null);
   };
+
+  console.log(chosenUser);
 
   return (
     <div className='add-user-popup'>
@@ -68,6 +71,7 @@ const AddUserPopUp = (props) => {
             type='submit'
             className='btn btn-primary btn-block choose-user-btn'
             onClick={(e) => handleSubmit(e)}
+            disabled={!chosenUser}
           >
             Підтвердити
           </button>

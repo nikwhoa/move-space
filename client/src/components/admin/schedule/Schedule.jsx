@@ -49,7 +49,12 @@ const Schedule = () => {
 
   return (
     <div>
-      {isShowPopUp && <AddUserPopUp setShowPopUp={setShowPopUp} scheduleId={scheduleIdForPopUp} />}
+      {isShowPopUp && (
+        <AddUserPopUp
+          setShowPopUp={setShowPopUp}
+          scheduleId={scheduleIdForPopUp}
+        />
+      )}
       <div className='container'>
         <div className='row'>
           <div className='col-12'>
@@ -76,7 +81,10 @@ const Schedule = () => {
                   scheduleItems.map((item) => (
                     <tr key={item._id}>
                       <td>{item.scheduleItem}</td>
-                      <td>{item.TrainTime}</td>
+                      <td>
+                        <div>{item.TrainTime}</div>
+                        <div>{item.trainDay}</div>
+                      </td>
                       <td>
                         <button
                           type='button'

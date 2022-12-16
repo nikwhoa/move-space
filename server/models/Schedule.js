@@ -5,7 +5,10 @@ const scheduleSchema = new mongoose.Schema(
     scheduleItem: {
       type: String,
       required: true,
-      unique: true,
+    },
+    trainDay: {
+      type: String,
+      required: true,
     },
     TrainTime: {
       type: Date,
@@ -19,8 +22,7 @@ const scheduleSchema = new mongoose.Schema(
       type: Array,
     },
   },
-  { timestamps: true },
+  { timestamps: true }
 );
-
 
 export default mongoose.model('Schedule', scheduleSchema);

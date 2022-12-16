@@ -24,12 +24,15 @@ export const getSchedule = createAsyncThunk(
 
 export const createSchedule = createAsyncThunk(
   'schedule/createSchedule',
-  async ({ scheduleName, scheduleDate, scheduleTrainer }) => {
+  async ({
+    scheduleName, scheduleDate, scheduleTrainer, trainDay
+  }) => {
     try {
       const { data } = await axios.post('/schedule/create', {
         scheduleItem: scheduleName,
         TrainTime: scheduleDate,
         trainer: scheduleTrainer,
+        trainDay,
       });
       return data;
     } catch (error) {
