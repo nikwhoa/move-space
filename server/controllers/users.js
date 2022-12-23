@@ -12,3 +12,15 @@ export const getUsers = async (req, res) => {
         });
     }
 };
+
+export const getUser = async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id);
+
+        res.json(user);
+    } catch (e) {
+        res.json({
+            message: 'Error while getting user',
+        });
+    }
+};

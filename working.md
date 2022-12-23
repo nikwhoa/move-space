@@ -1,4 +1,4 @@
-editing schedule item from admin-page (name, time, day and delete users)
+editing schedule item from admin-page (delete or add users to schedule)
 
 
  <!-- 	"username": "admin",

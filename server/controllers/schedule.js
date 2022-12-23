@@ -1,6 +1,11 @@
 import Schedule from '../models/Schedule.js';
 import User from '../models/User.js';
 
+const update = async (user, schedule) => {
+  await User.updateOne({ _id: user }, { $push: { schedule } });
+  await Schedule.updateOne({ _id: schedule }, { $push: { users: user } });
+};
+
 export const createSchedule = async (req, res) => {
   const { scheduleItem, TrainTime, trainer, trainDay } = req.body;
   try {
@@ -64,8 +69,8 @@ export const linkSchedule = async (req, res) => {
       });
     }
 
-    await User.updateOne({ _id: userId }, { $push: { schedule: scheduleId } });
-    await Schedule.updateOne({ _id: scheduleId }, { $push: { users: userId } });
+    update(userId, scheduleId); // update user schedule
+
     res.json({
       message: 'Користувач успішно доданий до розкладу',
     });
@@ -75,6 +80,45 @@ export const linkSchedule = async (req, res) => {
     console.log(err);
     res.json({
       message: 'Error while linking schedule',
+    });
+  }
+};
+
+export const updateSchedule = async (req, res) => {
+  try {
+    const { scheduleId, scheduleItem, TrainTime, trainer, trainDay, user } =
+      req.body;
+
+    await Schedule.updateOne(
+      { _id: scheduleId },
+      { scheduleItem, TrainTime, trainer, trainDay }
+    );
+
+    update(user, scheduleId); // update user schedule
+
+    res.json({
+      message: 'Розклад успішно оновлено',
+    });
+  } catch (err) {
+    res.json({
+      message: 'Під час оновлення сталася помилка',
+    });
+  }
+};
+
+export const removeUserFromSchedule = async (req, res) => {
+  try {
+    const { userId, scheduleId } = req.body;
+
+    await User.updateOne({ _id: userId }, { $pull: { schedule: scheduleId } });
+    await Schedule.updateOne({ _id: scheduleId }, { $pull: { users: userId } });
+
+    res.json({
+      message: 'Користувач успішно видалений з розкладу',
+    });
+  } catch (err) {
+    res.json({
+      message: 'Під час видалення сталася помилка',
     });
   }
 };

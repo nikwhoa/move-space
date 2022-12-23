@@ -28,3 +28,22 @@
   max-width: 450px;
   width: 100%;
 }
+
+.edit-schedule-form {
+  max-height: fit-content !important;
+
+  .users-in-schedule {
+    margin-top: 60px;
+    li {
+      color: white;
+    }
+  }
+}
+
+.remove-user-btn {
+  margin-left: 1rem;
+  font-size: 8px !important;
+  color: red !important;
+  position: relative;
+  top: -5px;
+}

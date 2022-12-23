@@ -68,6 +68,42 @@ export const linkSchedule = createAsyncThunk(
   }
 );
 
+export const updateSchedule = createAsyncThunk(
+  'schedule/updateSchedule',
+  async ({
+    scheduleId, scheduleItem, TrainTime, trainer, trainDay, user
+  }) => {
+    try {
+      const { data } = await axios.post(`/schedule/update/${scheduleId}`, {
+        scheduleId,
+        scheduleItem,
+        TrainTime,
+        trainer,
+        trainDay,
+        user,
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const removeUserFromSchedule = createAsyncThunk(
+  'schedule/removeUserFromSchedule',
+  async ({ userId, scheduleId }) => {
+    try {
+      const { data } = await axios.post(`/schedule/removeUser/${userId}`, {
+        userId,
+        scheduleId,
+      });
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
 export const scheduleSlice = createSlice({
   name: 'schedule',
   initialState: initState,
@@ -121,6 +157,30 @@ export const scheduleSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    [updateSchedule.pending]: (state) => {
+      state.isLoading = true;
+      state.status = null;
+    },
+    [updateSchedule.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.status = action.payload.message;
+    },
+    [updateSchedule.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    [removeUserFromSchedule.pending]: (state) => {
+      state.isLoading = true;
+      state.status = null;
+    },
+    [removeUserFromSchedule.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.status = action.payload.message;
+    },
+    [removeUserFromSchedule.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    }
   },
 });
 

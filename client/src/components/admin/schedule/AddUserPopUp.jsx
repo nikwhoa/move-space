@@ -9,7 +9,6 @@ import LoadingSpinner from '../../../utils/LoadingSpinner';
 
 const AddUserPopUp = (props) => {
   const { setShowPopUp, scheduleId } = props;
-
   const [chosenUser, setChosenUser] = useState(null);
 
   const users = useSelector((state) => state.users.users);
@@ -58,7 +57,7 @@ const AddUserPopUp = (props) => {
             {isLoading ? (
               <LoadingSpinner />
             ) : (
-              users.map((user) => (
+              users.filter((user) => user.role === 'user').map((user) => (
                 <option key={user._id} value={user._id}>
                   {user.username}
                 </option>
