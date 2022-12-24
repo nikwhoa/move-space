@@ -54,7 +54,7 @@ const CreateSchedule = () => {
     setScheduleName('');
     setScheduleDate({});
     setScheduleTrainer('');
-    setWeekDay(null);
+    setWeekDay('');
   };
   console.log('weekDay', weekDay);
   return (
@@ -114,6 +114,7 @@ const CreateSchedule = () => {
                   <select
                     className='form-input'
                     onChange={(e) => setWeekDay(e.target.value)}
+                    value={weekDay}
                   >
                     <option value={weekDay}>Оберіть день тижня</option>
                     {weekDays.map((day) => (
