@@ -2,6 +2,10 @@ import Schedule from '../models/Schedule.js';
 import User from '../models/User.js';
 
 const update = async (user, schedule) => {
+  if (user === null || schedule === null) {
+    return;
+  }
+
   await User.updateOne({ _id: user }, { $push: { schedule } });
   await Schedule.updateOne({ _id: schedule }, { $push: { users: user } });
 };
