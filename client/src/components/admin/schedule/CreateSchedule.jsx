@@ -12,7 +12,7 @@ import './style.scss';
 const CreateSchedule = () => {
   const [scheduleName, setScheduleName] = useState('');
   const [scheduleDate, setScheduleDate] = useState({});
-  const [scheduleTrainer, setScheduleTrainer] = useState('');
+  const [scheduleTrainer, setScheduleTrainer] = useState('Оберіть тренера');
   const [user, setUser] = useState(null);
   const [weekDays, setWeekDays] = useState([
     'Понеділок',
@@ -23,7 +23,7 @@ const CreateSchedule = () => {
     'Субота',
     'Неділя',
   ]);
-  const [weekDay, setWeekDay] = useState(null);
+  const [weekDay, setWeekDay] = useState('Оберіть день тижня');
 
   const { status } = useSelector((state) => state.schedule);
   const dispatch = useDispatch();
@@ -53,10 +53,11 @@ const CreateSchedule = () => {
 
     setScheduleName('');
     setScheduleDate({});
-    setScheduleTrainer('');
-    setWeekDay('');
+    setScheduleTrainer('Оберіть тренера');
+    setWeekDay('Оберіть день тижня');
   };
   console.log('weekDay', weekDay);
+  console.log('scheduleTrainer', scheduleTrainer);
   return (
     <div className='container justify-content-center'>
       <div className='row'>
@@ -90,13 +91,15 @@ const CreateSchedule = () => {
               </div>
 
               <div className='input-container'>
+                Тренер
+                <br />
                 <label className='label' />
                 <select
                   className='form-input'
                   onChange={(e) => setScheduleTrainer(e.target.value)}
-                  // value={scheduleTrainer}
+                  value={scheduleTrainer}
                 >
-                  <option value={scheduleTrainer}>Оберіть тренера</option>
+                  {/* <option value={scheduleTrainer}>{scheduleTrainer.username}</option> */}
                   {user && user.length > 0
                     ? user.map((item) => (
                         <option key={item._id} value={item._id}>
@@ -116,7 +119,7 @@ const CreateSchedule = () => {
                     onChange={(e) => setWeekDay(e.target.value)}
                     value={weekDay}
                   >
-                    <option value={weekDay}>Оберіть день тижня</option>
+                    {/* <option value={weekDay}>{weekDay}</option> */}
                     {weekDays.map((day) => (
                       <option value={day} key={day}>
                         {day}

@@ -1,599 +1,70 @@
-import React from 'react';
-import './schedule.scss';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
+import { Tab, TabList, Tabs } from 'react-tabs';
+import { getSchedule } from '../../slices/schedule/scheduleSlice';
+import { getMe, checkIsAdmin } from '../../slices/auth/authSlice';
+import './schedule.scss';
+import 'react-tabs/style/react-tabs.css';
+import renderSchedule from './renderSchedule';
 
 const Schedule = () => {
-    return (
-        <motion.div
-            transition={{ duration: 0.75 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className='site-section section-2'
-            id='schedule-section'
-        >
-            <div className='container'>
-                <div className='row'>
-                    <div className='col-lg-6 mb-5'>
-                        <h2 className='section-title'>Розклад</h2>
-                    </div>
-                </div>
+  const dispatch = useDispatch();
 
-                <div className='row'>
-                    <div className='col-12'>
-                        <ul
-                            className='nav nav-tabs mb-5 border-bottom-0 justify-content-center tab-list-custom'
-                            id='myTab'
-                            role='tablist'
-                        >
-                            <li className='nav-item'>
-                                <a
-                                    className='nav-link active'
-                                    id='monday-tab'
-                                    data-toggle='tab'
-                                    href='#monday'
-                                    role='tab'
-                                    aria-controls='monday'
-                                    aria-selected='true'
-                                >
-                                    Понеділок
-                                </a>
-                            </li>
-                            <li className='nav-item'>
-                                <a
-                                    className='nav-link'
-                                    id='tuesday-tab'
-                                    data-toggle='tab'
-                                    href='#tuesday'
-                                    role='tab'
-                                    aria-controls='tuesday'
-                                    aria-selected='false'
-                                >
-                                    Вівторок
-                                </a>
-                            </li>
-                            <li className='nav-item'>
-                                <a
-                                    className='nav-link'
-                                    id='wednesday-tab'
-                                    data-toggle='tab'
-                                    href='#wednesday'
-                                    role='tab'
-                                    aria-controls='wednesday'
-                                    aria-selected='false'
-                                >
-                                    Середа
-                                </a>
-                            </li>
-                            <li className='nav-item'>
-                                <a
-                                    className='nav-link'
-                                    id='wednesday-tab'
-                                    data-toggle='tab'
-                                    href='#wednesday'
-                                    role='tab'
-                                    aria-controls='wednesday'
-                                    aria-selected='false'
-                                >
-                                    Четвер
-                                </a>
-                            </li>
-                            <li className='nav-item'>
-                                <a
-                                    className='nav-link'
-                                    id='wednesday-tab'
-                                    data-toggle='tab'
-                                    href='#wednesday'
-                                    role='tab'
-                                    aria-controls='wednesday'
-                                    aria-selected='false'
-                                >
-                                    Пʼятниця
-                                </a>
-                            </li>
-                            <li className='nav-item'>
-                                <a
-                                    className='nav-link'
-                                    id='wednesday-tab'
-                                    data-toggle='tab'
-                                    href='#wednesday'
-                                    role='tab'
-                                    aria-controls='wednesday'
-                                    aria-selected='false'
-                                >
-                                    Субота
-                                </a>
-                            </li>
-                            <li className='nav-item'>
-                                <a
-                                    className='nav-link'
-                                    id='wednesday-tab'
-                                    data-toggle='tab'
-                                    href='#wednesday'
-                                    role='tab'
-                                    aria-controls='wednesday'
-                                    aria-selected='false'
-                                >
-                                    Неділя
-                                </a>
-                            </li>
-                        </ul>
-                        <div className='tab-content' id='myTabContent'>
-                            <div
-                                className='tab-pane fade show active'
-                                id='monday'
-                                role='tabpanel'
-                                aria-labelledby='monday-tab'
-                            >
-                                <table className='table table-bordered table-custom table-striped '>
-                                    <tbody>
-                                        <tr>
-                                            <td>Силове тренування</td>
-                                            <td>8:00am - 10:00am</td>
-                                            <td>John Doe</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Кардіо</td>
-                                            <td>10:00am - 10:30am</td>
-                                            <td>James Holmes</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Аеробіка</td>
-                                            <td>1:00pm - 2:30pm</td>
-                                            <td>Ben Smith</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Скидаємо вагу</td>
-                                            <td>3:00pm - 3:45pm</td>
-                                            <td>Craig Peters</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Нарощуємо м’язову масу</td>
-                                            <td>5:00pm - 5:30pm</td>
-                                            <td>Paul Green</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Формуємо рельєф</td>
-                                            <td>5:00pm - 5:30pm</td>
-                                            <td>Paul Green</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div
-                                className='tab-pane fade'
-                                id='tuesday'
-                                role='tabpanel'
-                                aria-labelledby='tuesday-tab'
-                            >
-                                <table className='table table-bordered table-custom table-striped '>
-                                    <tbody>
-                                        <tr>
-                                            <td>Gym</td>
-                                            <td>8:00am - 10:00am</td>
-                                            <td>John Doe</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Meditation</td>
-                                            <td>10:00am - 10:30am</td>
-                                            <td>James Holmes</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Weight Lifting</td>
-                                            <td>1:00pm - 2:30pm</td>
-                                            <td>Ben Smith</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Crossfit</td>
-                                            <td>3:00pm - 3:45pm</td>
-                                            <td>Craig Peters</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Aerobics</td>
-                                            <td>5:00pm - 5:30pm</td>
-                                            <td>Paul Green</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div
-                                className='tab-pane fade'
-                                id='wednesday'
-                                role='tabpanel'
-                                aria-labelledby='wednesday-tab'
-                            >
-                                <table className='table table-bordered table-custom table-striped '>
-                                    <tbody>
-                                        <tr>
-                                            <td>Gym</td>
-                                            <td>8:00am - 10:00am</td>
-                                            <td>John Doe</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Meditation</td>
-                                            <td>10:00am - 10:30am</td>
-                                            <td>James Holmes</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Weight Lifting</td>
-                                            <td>1:00pm - 2:30pm</td>
-                                            <td>Ben Smith</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Crossfit</td>
-                                            <td>3:00pm - 3:45pm</td>
-                                            <td>Craig Peters</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Aerobics</td>
-                                            <td>5:00pm - 5:30pm</td>
-                                            <td>Paul Green</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div
-                                className='tab-pane fade'
-                                id='thursday'
-                                role='tabpanel'
-                                aria-labelledby='thursday-tab'
-                            >
-                                <table className='table table-bordered table-custom table-striped '>
-                                    <tbody>
-                                        <tr>
-                                            <td>Gym</td>
-                                            <td>8:00am - 10:00am</td>
-                                            <td>John Doe</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Meditation</td>
-                                            <td>10:00am - 10:30am</td>
-                                            <td>James Holmes</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Weight Lifting</td>
-                                            <td>1:00pm - 2:30pm</td>
-                                            <td>Ben Smith</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Crossfit</td>
-                                            <td>3:00pm - 3:45pm</td>
-                                            <td>Craig Peters</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Aerobics</td>
-                                            <td>5:00pm - 5:30pm</td>
-                                            <td>Paul Green</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div
-                                className='tab-pane fade'
-                                id='friday'
-                                role='tabpanel'
-                                aria-labelledby='friday-tab'
-                            >
-                                <table className='table table-bordered table-custom table-striped '>
-                                    <tbody>
-                                        <tr>
-                                            <td>Gym</td>
-                                            <td>8:00am - 10:00am</td>
-                                            <td>John Doe</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Meditation</td>
-                                            <td>10:00am - 10:30am</td>
-                                            <td>James Holmes</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Weight Lifting</td>
-                                            <td>1:00pm - 2:30pm</td>
-                                            <td>Ben Smith</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Crossfit</td>
-                                            <td>3:00pm - 3:45pm</td>
-                                            <td>Craig Peters</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Aerobics</td>
-                                            <td>5:00pm - 5:30pm</td>
-                                            <td>Paul Green</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <div
-                                className='tab-pane fade'
-                                id='sunday'
-                                role='tabpanel'
-                                aria-labelledby='sunday-tab'
-                            >
-                                <table className='table table-bordered table-custom table-striped '>
-                                    <tbody>
-                                        <tr>
-                                            <td>Gym</td>
-                                            <td>8:00am - 10:00am</td>
-                                            <td>John Doe</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Meditation</td>
-                                            <td>10:00am - 10:30am</td>
-                                            <td>James Holmes</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Weight Lifting</td>
-                                            <td>1:00pm - 2:30pm</td>
-                                            <td>Ben Smith</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Crossfit</td>
-                                            <td>3:00pm - 3:45pm</td>
-                                            <td>Craig Peters</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Aerobics</td>
-                                            <td>5:00pm - 5:30pm</td>
-                                            <td>Paul Green</td>
-                                            <td className='text-center'>
-                                                <a
-                                                    href='#contact-section'
-                                                    className='smoothscroll'
-                                                >
-                                                    Join Now
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  const { schedule } = useSelector((state) => state.schedule.schedule);
+  const { user } = useSelector((state) => state.auth);
+  const { isLoading } = useSelector((state) => state.schedule);
+  const isAdmin = useSelector(checkIsAdmin);
+  useEffect(() => {
+    dispatch(getMe());
+    dispatch(getSchedule());
+  }, [dispatch]);
+
+  return (
+    <motion.div
+      transition={{ duration: 0.75 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className='site-section section-2'
+      id='schedule-section'
+    >
+      <div className='container'>
+        <div className='row'>
+          <div className='col-lg-6 mb-5'>
+            <h2 className='section-title'>Розклад</h2>
+          </div>
+        </div>
+
+        <div className='row'>
+          <div className='col-12'>
+            <div className='schedule'>
+              <div className='schedule__tabs'>
+                <Tabs>
+                  <TabList>
+                    <Tab>Понеділок</Tab>
+                    <Tab>Вівторок</Tab>
+                    <Tab>Середа</Tab>
+                    <Tab>Четвер</Tab>
+                    <Tab>П&apos;ятниця</Tab>
+                    <Tab>Субота</Tab>
+                    <Tab>Неділя</Tab>
+                  </TabList>
+                  {renderSchedule(isLoading, schedule, user, isAdmin, 'Понеділок')}
+                  {renderSchedule(isLoading, schedule, user, isAdmin, 'Вівторок')}
+                  {renderSchedule(isLoading, schedule, user, isAdmin, 'Середа')}
+                  {renderSchedule(isLoading, schedule, user, isAdmin, 'Четвер')}
+                  {renderSchedule(isLoading, schedule, user, isAdmin, "П'ятниця")}
+                  {renderSchedule(isLoading, schedule, user, isAdmin, 'Субота')}
+                  {renderSchedule(isLoading, schedule, user, isAdmin, 'Неділя')}
+                </Tabs>
+              </div>
             </div>
-        </motion.div>
-    );
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
 };
 
 export default Schedule;
