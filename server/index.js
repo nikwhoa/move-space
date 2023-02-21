@@ -7,9 +7,6 @@ import authRoute from './routes/auth.js';
 import usersRoute from './routes/users.js';
 import classesRoute from './routes/classes.js';
 import scheduleRoute from './routes/schedule.js';
-import https from 'https';
-import http from 'http';
-import fs from 'fs';
 
 const app = express();
 dotenv.config();
@@ -31,21 +28,21 @@ app.use('/api/users', usersRoute);
 app.use('/api/classes', classesRoute);
 app.use('/api/schedule', scheduleRoute);
 
-
 async function start() {
-    try {
-        // mongoexport --uri mongodb+srv://test@cluster0.mnbq4kc.mongodb.net/move-space-app --collection=users --out=users.json
-        // await mongoose.connect(
-        //     `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.mnbq4kc.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
-        // );
+  try {
+    // mongoexport --uri mongodb+srv://test@cluster0.mnbq4kc.mongodb.net/move-space-app --collection=users --out=users.json
+    // await mongoose.connect(
+    //     `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.mnbq4kc.mongodb.net/${DB_NAME}?retryWrites=true&w=majority`
+    // );
 
-        // await mongoose.connect(`mongodb://91.219.62.242:27017/move-space`);
-        await mongoose.connect(`mongodb://localhost:27017/move-space-local`);
+    await mongoose.connect(
+      `mongodb://${DB_USER}:${DB_PASSWORD}@91.219.62.243:27017/${DB_NAME}?retryWrites=true&w=majority`
+    );
 
-        app.listen(PORT, () => console.log(`server started on port ${PORT}`));
-    } catch (error) {
-        console.log(error);
-    }
+    app.listen(PORT, () => console.log(`server started on port ${PORT}`));
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 start();
