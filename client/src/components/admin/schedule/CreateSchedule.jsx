@@ -40,6 +40,14 @@ const CreateSchedule = () => {
     }
   }, [status]);
 
+  const isButtonDisabled = () => {
+    if (weekDay === 'Оберіть день тижня') {
+      return true;
+    }
+    return false;
+  };
+
+  console.log(isButtonDisabled);
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(
@@ -56,8 +64,7 @@ const CreateSchedule = () => {
     setScheduleTrainer('Оберіть тренера');
     setWeekDay('Оберіть день тижня');
   };
-  console.log('weekDay', weekDay);
-  console.log('scheduleTrainer', scheduleTrainer);
+
   return (
     <div className='container justify-content-center'>
       <div className='row'>
@@ -119,7 +126,7 @@ const CreateSchedule = () => {
                     onChange={(e) => setWeekDay(e.target.value)}
                     value={weekDay}
                   >
-                    {/* <option value={weekDay}>{weekDay}</option> */}
+                    <option value={weekDay}>{weekDay}</option>
                     {weekDays.map((day) => (
                       <option value={day} key={day}>
                         {day}
@@ -133,6 +140,7 @@ const CreateSchedule = () => {
                 type='submit'
                 className='btn btn-primary btn-block create-user-btn'
                 onClick={(e) => handleSubmit(e)}
+                disabled={isButtonDisabled()}
               >
                 Підтвердити
               </button>

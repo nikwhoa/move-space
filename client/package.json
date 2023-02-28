@@ -4,6 +4,9 @@
   "private": true,
   "homepage": "https://move-space.norenko.net.ua/",
   "dependencies": {
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/material": "^5.11.11",
     "@reduxjs/toolkit": "^1.8.5",
     "axios": "^0.27.2",
     "cyrillic-to-translit-js": "^3.2.1",

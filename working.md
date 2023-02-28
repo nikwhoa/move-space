@@ -1,1 +1,1 @@
-display schedule in front part
+filter for schedule

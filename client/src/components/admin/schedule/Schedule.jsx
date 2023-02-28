@@ -82,7 +82,7 @@ const Schedule = () => {
                     <tr key={item._id}>
                       <td>{item.scheduleItem}</td>
                       <td>
-                        <div>{item.TrainTime}</div>
+                        <div>{item.TrainTime.slice(0, 16).replace('T', ' ')}</div>
                         <div>{item.trainDay}</div>
                       </td>
                       <td>

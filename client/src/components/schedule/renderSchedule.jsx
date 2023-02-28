@@ -4,8 +4,6 @@ import LoadingSpinner from '../../utils/LoadingSpinner';
 import displayUserSchedule from './displayUserSchedule';
 
 const renderSchedule = (isLoading, schedule, user, checkIsAdmin, day) => {
-  // console.log('user', user);
-  console.log('checkIsAdmin', checkIsAdmin);
   return (
     <TabPanel>
       {!user || checkIsAdmin ? (

@@ -1,16 +1,25 @@
 .tab-pane {
     display: none;
 }
+
 .active {
     display: block;
 }
+
 .react-tabs__tab:focus:after {
     content: none !important;
 }
+
 .react-tabs__tab-list {
     border: none !important;
     text-align: center;
 }
+
+.next-week-link {
+    cursor: pointer;
+    font-size: .7rem !important;
+}
+
 .react-tabs__tab--selected {
     border: none !important;
     background-color: #48d494 !important;
@@ -20,11 +29,13 @@
     padding: 10px 20px !important;
     margin: 0 10px !important;
     transition: all 0.3s ease !important;
+
     &:hover {
         color: #fff !important;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2) !important;
     }
 }
+
 .schedule-tabs-wrapper {
     display: flex !important;
     align-items: center !important;
@@ -35,6 +46,7 @@
         flex-direction: column !important;
     }
 }
+
 .schedule__item {
     display: flex;
     flex-direction: column;
@@ -56,22 +68,26 @@
     &:hover {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     }
+
     &__title {
         font-size: 1.3rem;
         font-weight: 700;
         margin: 10px 0;
         color: #fff;
     }
+
     &__time {
         font-size: 1.2rem;
         font-weight: 400;
         margin: 10px 0;
     }
+
     &__description {
         font-size: 1rem;
         font-weight: 400;
         margin: 10px 0;
     }
+
     &__button {
         margin: 10px 0;
         padding: 10px 20px;
@@ -80,8 +96,70 @@
         background-color: #fff;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         transition: all 0.3s ease;
+
         &:hover {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+
+.week-schedule {
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        border-top: 1px solid #dee2e6;
+        border-bottom: 2px solid #dee2e6;
+
+        &__item {
+            width: 100%;
+            padding: 10px 0;
+            font-weight: 700;
+
+            span {
+                font-size: .8rem;
+            }
+        }
+
+    }
+
+    &__body {
+        &__item {
+            // padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            // border-top: 1px solid #eeeeef;
+            border-bottom: 1px solid #dee2e6;
+            color: #e1e0e0;
+            font-weight: 500;
+            font-size: 1rem;
+
+            &:nth-child(odd) {
+                // background-color: rgba(158, 71, 71, 0.5);
+                background-color: rgba(213, 213, 213, 0.1);
+            }
+
+            // even items
+            &:nth-child(even) {
+                background-color: rgba(0, 0, 0, .03);
+            }
+
+            .week-schedule-item {
+                width: 100%;
+                text-align: center;
+                // border-left: .5px solid rgb(222, 226, 230, .3);
+                // border-right: .5px solid rgb(222, 226, 230, .3);
+                padding: 10px;
+                button {
+                    padding: 5px;
+                    font-size: .7rem;
+                }
+
+                &__train {
+                    margin: 1rem;
+                }
+            }
         }
     }
 }

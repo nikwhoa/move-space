@@ -11,6 +11,10 @@ import scheduleRoute from './routes/schedule.js';
 const app = express();
 dotenv.config();
 
+// ssl_certificate /etc/ssl/test.norenko.net.ua.pem;
+// ssl_certificate_key /etc/ssl/test.norenko.net.ua.key.pem;
+// sudo certbot --nginx -d move-space.norenko.net.ua -d www.move-space.norenko.net.ua
+
 const PORT = process.env.PORT || 5008;
 const { DB_USER } = process.env;
 const { DB_PASSWORD } = process.env;

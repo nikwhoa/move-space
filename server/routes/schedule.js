@@ -17,5 +17,4 @@ router.post('/delete/:id', deleteSchedule);
 router.post('/update/:id', updateSchedule);
 router.post('/removeUser/:id', removeUserFromSchedule);
 
-
 export default router;
