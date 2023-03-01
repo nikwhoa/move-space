@@ -133,6 +133,7 @@ const renderScheduleByWeek = (
     }
     return 7;
   };
+  console.log('test');
   return (
     <div>
       <div className='guest__schedule week-schedule'>
