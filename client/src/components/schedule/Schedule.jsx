@@ -65,7 +65,7 @@ const Schedule = () => {
             <div className='schedule'>
               <div className='schedule__tabs'>
                 {renderScheduleByWeek(isLoading, schedule, user, isAdmin, isNextWeek)}
-                <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
+                {/* <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                   <TabList>
                     <Tab>Понеділок</Tab>
                     <Tab>Вівторок</Tab>
@@ -82,7 +82,7 @@ const Schedule = () => {
                   {renderSchedule(isLoading, schedule, user, isAdmin, "П'ятниця")}
                   {renderSchedule(isLoading, schedule, user, isAdmin, 'Субота')}
                   {renderSchedule(isLoading, schedule, user, isAdmin, 'Неділя')}
-                </Tabs>
+                </Tabs> */}
               </div>
             </div>
           </div>
