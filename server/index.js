@@ -41,6 +41,7 @@ async function start() {
 
     await mongoose.connect(
       `mongodb://${DB_USER}:${DB_PASSWORD}@91.219.62.243:27017/${DB_NAME}?retryWrites=true&w=majority`
+      // `mongodb://${DB_USER}:${DB_PASSWORD}@91.219.62.243:27017/${DB_NAME}?retryWrites=true&w=majority`
     );
 
     app.listen(PORT, () => console.log(`server started on port ${PORT}`));

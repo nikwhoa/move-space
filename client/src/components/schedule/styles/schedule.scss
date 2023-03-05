@@ -1,0 +1,118 @@
+.tab-pane {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.react-tabs__tab:focus:after {
+    content: none !important;
+}
+
+.react-tabs__tab-list {
+    border: none !important;
+    text-align: center;
+}
+
+.filter-schedule-link {
+    cursor: pointer;
+    text-underline-offset: 3px;
+    font-size: 1.2rem !important;
+    text-decoration: underline #ffffff;
+
+    &:hover {
+        color: #48d494 !important;
+    }
+
+    &__active {
+        color: #48d494 !important;
+    }
+}
+
+.month-schedule {
+
+    .month-title {
+        font-size: 1rem;
+        font-weight: 300;
+        margin: 1rem 0;
+        color: #ffffff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @media screen and (max-width: 768px) {
+            font-size: .9rem;
+        }
+
+        &__date {
+            display: flex;
+            align-items: center;
+
+            // current
+            &--current {
+                font-size: 1.5rem;
+                font-weight: 900;
+                color: #ffffff;
+
+                @media screen and (max-width: 768px) {
+                    font-size: 1.1rem;
+                }
+            }
+
+            div {
+                @media screen and (max-width: 768px) {
+                    margin-right: 0.2rem;
+                    margin-left: 0.2rem;
+                }
+
+                margin-right: 1rem;
+                margin-left: 1rem;
+            }
+
+        }
+
+
+        &__arrow {
+            cursor: pointer;
+            line-height: 120px;
+            font-size: 1.5rem;
+            color: #ffffff;
+            width: 60px;
+            height: 60px;
+            position: relative;
+            z-index: 1;
+
+            svg {
+                position: relative;
+                z-index: 2;
+            }
+
+            &:hover {
+                svg {
+                    path {
+                        fill: #48d494 !important;
+                    }
+                }
+            }
+        }
+    }
+
+    &__table {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        grid-gap: 1rem;
+        margin-bottom: 1rem;
+
+        &__item {
+            .weekday {
+                font-size: 1rem;
+                font-weight: 300;
+                color: #ffffff;
+                margin-bottom: 1.5rem;
+                border-bottom: 1px solid #ffffff;
+            }
+        }
+    }
+}

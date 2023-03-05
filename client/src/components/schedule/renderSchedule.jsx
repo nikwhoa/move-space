@@ -1,7 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { TabPanel } from 'react-tabs';
 import LoadingSpinner from '../../utils/LoadingSpinner';
-import displayUserSchedule from './displayUserSchedule';
+import displayUserSchedule from './components/displayUserSchedule';
 
 const renderSchedule = (isLoading, schedule, user, checkIsAdmin, day) => {
   return (
