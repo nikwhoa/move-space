@@ -116,3 +116,96 @@
         }
     }
 }
+
+.schedule {
+    &__title {
+        font-size: 1rem;
+        font-weight: 300;
+        margin: 1rem 0;
+        color: #dad9d9;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @media screen and (max-width: 768px) {
+            font-size: .9rem;
+        }
+    }
+
+    &__arrow {
+        cursor: pointer;
+        line-height: 120px;
+        font-size: 1.5rem;
+        color: #ffffff;
+        width: 60px;
+        height: 60px;
+        position: relative;
+        z-index: 1;
+
+        svg {
+            position: relative;
+            z-index: 2;
+        }
+
+        &:hover {
+            svg {
+                path {
+                    fill: #48d494 !important;
+                }
+            }
+        }
+    }
+
+    .day {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        height: 80px;
+        div {
+            @media screen and (max-width: 968px) {
+                display: none;
+            }
+
+            margin-right: 1rem;
+            margin-left: 1rem;
+        }
+    }
+
+    .current-date {
+        text-transform: capitalize;
+        font-weight: 900;
+        color: #ffffff;
+
+        @media screen and (max-width: 768px) {
+            font-size: 1rem;
+        }
+
+    }
+
+    &__date {
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 300px;
+        width: 115px;
+        line-height: 180%;
+        @media screen and (max-width: 768px) {
+            flex-direction: column;
+        }
+
+
+
+    }
+
+    .train {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: column;
+        text-align: center;
+        text-transform: none;
+    }
+}

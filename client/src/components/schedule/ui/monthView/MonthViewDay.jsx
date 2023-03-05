@@ -15,7 +15,6 @@ const MonthViewDay = ({ date, schedule }) => {
     ).getDate();
 
     for (let i = firstDay; i <= lastDay; i++) {
-      console.log(i);
       output.push(new Date(date.getFullYear(), date.getMonth(), i + 1));
     }
     return output;

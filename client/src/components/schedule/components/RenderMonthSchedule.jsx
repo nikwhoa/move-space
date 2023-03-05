@@ -54,10 +54,10 @@ const RenderMonthSchedule = ({ schedule }) => {
   };
 
   return (
-    <div className='month-schedule'>
-      <div className='month-title'>
+    <div className='month-schedule schedule'>
+      <div className='schedule__title'>
         <div
-          className='month-title__arrow month-title__arrow--left'
+          className='schedule__arrow arrow-left'
           onClick={(e) => changeMonth(e)}
           onKeyDown={(e) => e.target.nodeName === 'path' && changeMonth(e)}
           role='button'
@@ -106,7 +106,7 @@ const RenderMonthSchedule = ({ schedule }) => {
           </div>
         </div>
         <div
-          className='month-title__arrow month-title__arrow-right'
+          className='schedule__arrow'
           onClick={(e) => changeMonth(e)}
           onKeyDown={(e) => e.target.nodeName === 'path' && changeMonth(e)}
           role='button'

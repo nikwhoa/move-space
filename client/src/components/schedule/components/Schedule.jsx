@@ -12,11 +12,9 @@ import RenderWeekSchedule from './RenderWeekSchedule';
 import RenderDaySchedule from './RenderDaySchedule';
 import ScheduleButton from '../ui/slider/ShowScheduleButton';
 
-// import renderScheduleByWeek from './renderScheduleByWeek';
-
 const Schedule = () => {
-  const [view, setView] = useState('month');
-
+  const [view, setView] = useState('week');
+  const [windowWidth, setWindowWidth] = useState(false);
   const dispatch = useDispatch();
 
   const { schedule } = useSelector((state) => state.schedule.schedule);
@@ -28,6 +26,25 @@ const Schedule = () => {
     dispatch(getMe());
     dispatch(getSchedule());
   }, [dispatch]);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      const prevView = view;
+      if (window.innerWidth < 1024) {
+        setWindowWidth(true);
+        setView('day');
+      } else {
+        setView(prevView);
+        setWindowWidth(false);
+      }
+    };
+
+    window.addEventListener('resize', handleWindowResize);
+
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
 
   return (
     <motion.div
@@ -45,7 +62,7 @@ const Schedule = () => {
           </div>
         </div>
         <div className='row'>
-          <div className='col-lg-6'>
+          <div className='col-lg-12' hidden={windowWidth}>
             Переглянути розклад на:&nbsp;
             <ScheduleButton view={view} setView={setView} value='day' />{' '}
             <ScheduleButton view={view} setView={setView} value='week' />{' '}
@@ -62,7 +79,7 @@ const Schedule = () => {
                   ) : (
                     {
                       month: <RenderMonthSchedule schedule={schedule} />,
-                      week: <RenderWeekSchedule />,
+                      week: <RenderWeekSchedule schedule={schedule} />,
                       day: <RenderDaySchedule />,
                     }[view]
                   )}

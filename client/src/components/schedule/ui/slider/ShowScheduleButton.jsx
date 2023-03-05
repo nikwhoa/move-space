@@ -27,7 +27,7 @@ const ScheduleButton = ({ view, setView, value }) => {
       role='button'
       tabIndex={0}
       className={`filter-schedule-link ${
-        view === value ? 'filter-schedule-link__active' : null
+        view === value ? 'filter-schedule-link__active' : ''
       }`}
     >
       {valueTranslate}
