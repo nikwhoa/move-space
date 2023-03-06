@@ -28,6 +28,13 @@ const Schedule = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    if (window.innerWidth < 1024) {
+      setWindowWidth(true);
+      setView('day');
+    } else {
+      setWindowWidth(false);
+    }
+
     const handleWindowResize = () => {
       const prevView = view;
       if (window.innerWidth < 1024) {
