@@ -12,10 +12,30 @@ const RenderDaySchedule = ({ schedule }) => {
     setDate(new Date());
   }, []);
 
+  const changeDay = (e) => {
+    if (e.target.nodeName === 'path') {
+      if (e.target.parentElement.parentElement.className.includes('left')) {
+        setDate(new Date(date.setDate(date.getDate() - 1)));
+      } else {
+        setDate(new Date(date.setDate(date.getDate() + 1)));
+      }
+    } else if (e.target.parentElement.className.includes('left')) {
+      setDate(new Date(date.setDate(date.getDate() - 1)));
+    } else {
+      setDate(new Date(date.setDate(date.getDate() + 1)));
+    }
+  };
+
   return (
     <div className='day-schedule schedule'>
       <div className='day-schedule__title'>
-        <div className='schedule__arrow'>
+        <div
+          className='schedule__arrow arrow-left'
+          onClick={(e) => changeDay(e)}
+          onKeyDown={(e) => e.target.nodeName === 'path' && changeDay(e)}
+          role='button'
+          tabIndex={0}
+        >
           <ArrowLeft />
         </div>
         <div className='day-schedule__date'>
@@ -25,7 +45,13 @@ const RenderDaySchedule = ({ schedule }) => {
             day: 'numeric',
           })}
         </div>
-        <div className='schedule__arrow'>
+        <div
+          className='schedule__arrow'
+          onClick={(e) => changeDay(e)}
+          onKeyDown={(e) => e.target.nodeName === 'path' && changeDay(e)}
+          role='button'
+          tabIndex={0}
+        >
           <ArrowRight />
         </div>
       </div>

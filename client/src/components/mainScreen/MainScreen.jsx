@@ -6,7 +6,7 @@ import image from './classes-image.jpg';
 const MainScreen = () => {
     return (
         <>
-            <video autoPlay muted loop id='main-video'>
+            <video autoPlay muted loop id='main-video' playsInline>
                 <source src='https://images.norenko.net.ua/public/main-video.mp4' />
             </video>
             <div
