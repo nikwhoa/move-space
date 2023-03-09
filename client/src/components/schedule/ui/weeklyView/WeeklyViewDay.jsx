@@ -4,24 +4,15 @@
 /* eslint-disable no-plusplus */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { endOfWeek, getWeek, startOfWeek, add } from 'date-fns';
+import { formatISO } from 'date-fns';
 
 const WeeklyViewDay = ({ day, schedule }) => {
-  const weekOutput = (d) => {
-    const week = [];
-    const startWeek = startOfWeek(d, { weekStartsOn: 1 });
-    for (let i = 0; i < 7; i++) {
-      week.push(add(startWeek, { days: i }));
-    }
-    return week;
-  };
-
   return (
     <>
       {schedule
         .filter(
           (item) =>
-            item.TrainTime.slice(0, 10) === day.toISOString().slice(0, 10)
+            item.TrainTime.slice(0, 10) === formatISO(day).slice(0, 10)
         )
         .sort((a, b) => {
           const timeA = a.TrainTime.slice(-13, -11);

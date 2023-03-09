@@ -16,6 +16,7 @@ const RenderWeekSchedule = ({ schedule }) => {
     for (let i = 0; i < 7; i++) {
       week.push(add(startWeek, { days: i }));
     }
+    // console.log(week);
     return week;
   };
 

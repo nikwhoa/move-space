@@ -5,6 +5,11 @@
         script    : "npx",
         interpreter: "none",
         args: "serve -s build -p 3000"
+      },
+{
+        name      : "move-space-client",
+        script    : "npm start",
+        interpreter: "none",
       }
     ]
   }

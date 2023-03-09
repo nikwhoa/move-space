@@ -143,8 +143,12 @@
         z-index: 1;
 
         svg {
-            position: relative;
+            text-decoration: none;
+            position: absolute;
             z-index: 2;
+            margin: -15px 0 0 -15px;
+            top: 50%;
+            left: 50%;
         }
 
         &:hover {
@@ -162,6 +166,7 @@
         justify-content: space-between;
         flex-direction: column;
         height: 80px;
+
         div {
             @media screen and (max-width: 968px) {
                 display: none;
@@ -192,6 +197,7 @@
         height: 300px;
         width: 115px;
         line-height: 180%;
+
         @media screen and (max-width: 768px) {
             flex-direction: column;
         }
@@ -207,5 +213,23 @@
         flex-direction: column;
         text-align: center;
         text-transform: none;
+    }
+}
+
+.day-schedule {
+    &__title {
+        height: 40px;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__date {
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: #ffffff;
+        text-align: center;
+        text-transform: capitalize;
     }
 }

@@ -87,7 +87,7 @@ const Schedule = () => {
                     {
                       month: <RenderMonthSchedule schedule={schedule} />,
                       week: <RenderWeekSchedule schedule={schedule} />,
-                      day: <RenderDaySchedule />,
+                      day: <RenderDaySchedule schedule={schedule} />,
                     }[view]
                   )}
                 </div>
