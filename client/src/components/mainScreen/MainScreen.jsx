@@ -22,7 +22,7 @@ const MainScreen = () => {
                             <h1 style={{ textAlign: 'center' }}>
                                 <span>Welcome to</span>
                                 <br />
-                                MOV.SPACE
+                                MOV.space
                             </h1>
                             <div className='scroll' />
                         </div>

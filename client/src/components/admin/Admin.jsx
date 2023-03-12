@@ -6,9 +6,9 @@ import { useSelector } from 'react-redux';
 import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../../utils/LoadingSpinner';
 import {
-    checkIsAdmin,
-    checkIsAuth,
-    checkIsTrainer,
+  checkIsAdmin,
+  checkIsAuth,
+  checkIsTrainer,
 } from '../../slices/auth/authSlice';
 import CreateUser from './createUser/CreateUser';
 import './admin.scss';
@@ -19,86 +19,74 @@ import Class from './classes/Class';
 import CreateSchedule from './schedule/CreateSchedule';
 import Schedule from './schedule/Schedule';
 import EditSchedule from './schedule/EditSchedule';
+import MainPage from './mainPage/MainPage';
 
 const Admin = () => {
-    const isAdmin = useSelector(checkIsAdmin);
-    const { isLoading } = useSelector((state) => state.auth);
-    const { username } = useSelector((state) => state.auth.user) || {};
-    const isAuth = useSelector(checkIsAuth);
-    const { logout } = useSelector((state) => state.auth);
-    const navigate = useNavigate();
-    const isTrainer = useSelector(checkIsTrainer) === 'trainer';
+  const isAdmin = useSelector(checkIsAdmin);
+  const { isLoading } = useSelector((state) => state.auth);
+  const { username } = useSelector((state) => state.auth.user) || {};
+  const isAuth = useSelector(checkIsAuth);
+  const { logout } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  const isTrainer = useSelector(checkIsTrainer) === 'trainer';
 
-    const showAdmin = isAdmin || isTrainer;
+  const showAdmin = isAdmin || isTrainer;
 
-    useEffect(() => {
-        if (logout) {
-            navigate('/');
-        }
-    }, [logout, navigate]);
+  useEffect(() => {
+    if (logout) {
+      navigate('/');
+    }
+  }, [logout, navigate]);
 
-    return (
-        <div>
-            {isLoading ? (
-                <LoadingSpinner />
-            ) : (
-                <div className='text-center'>
-                    Привіт, {username}!
-                    <div className='justify-content-center'>
-                        <ul className='admin-links'>
-                            <li>
-                                <Link to='/admin'>Адмін-панель</Link>
-                            </li>
-                            {!isTrainer ? (
-                                <li>
-                                    <Link to='create-user'>
-                                        Додати користувача
-                                    </Link>
-                                </li>
-                            ) : null}
-                            {!isTrainer ? (
-                                <li>
-                                    <Link to='classes'>Тренування</Link>
-                                </li>
-                            ) : null}
-                            <li>
-                                <Link to='schedule'>Розклад</Link>
-                            </li>
-                            {!isTrainer ? (
-                                <li>
-                                    <Link to='users'>Користувачі</Link>
-                                </li>
-                            ) : null}
-                        </ul>
-                        <Routes>
-                            <Route
-                                path='/create-user'
-                                element={<CreateUser />}
-                            />
-                            <Route path='/classes' element={<Classes />} />
-                            <Route
-                                path='/classes/create'
-                                element={<CreateClass />}
-                            />
-                            <Route
-                                path='/classes/edit/:id'
-                                element={<Class />}
-                            />
-                            <Route path='/users' element={<Users />} />
-                            <Route path='/schedule' element={<Schedule />} />
-                            <Route
-                                path='/schedule/create-schedule'
-                                element={<CreateSchedule />}
-                            />
-                            <Route
-                                path='/schedule/edit/:id'
-                                element={<EditSchedule />}
-                            />
-                        </Routes>
-                    </div>
-                </div>
-            )}
+  return (
+    <div>
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
+        <div className='text-center'>
+          Привіт, {username}!
+          <div className='justify-content-center'>
+            <ul className='admin-links'>
+              <li>
+                <Link to='/admin'>Адмін-панель</Link>
+              </li>
+              {!isTrainer ? (
+                <li>
+                  <Link to='create-user'>Додати користувача</Link>
+                </li>
+              ) : null}
+              {!isTrainer ? (
+                <li>
+                  <Link to='classes'>Тренування</Link>
+                </li>
+              ) : null}
+              <li>
+                <Link to='schedule'>Розклад</Link>
+              </li>
+              {!isTrainer ? (
+                <li>
+                  <Link to='users'>Користувачі</Link>
+                </li>
+              ) : null}
+            </ul>
+            <Routes>
+              <Route path='/' element={<MainPage />} />
+              <Route path='/create-user' element={<CreateUser />} />
+              <Route path='/classes' element={<Classes />} />
+              <Route path='/classes/create' element={<CreateClass />} />
+              <Route path='/classes/edit/:id' element={<Class />} />
+              <Route path='/users' element={<Users />} />
+              <Route path='/schedule' element={<Schedule />} />
+              <Route
+                path='/schedule/create-schedule'
+                element={<CreateSchedule />}
+              />
+              <Route path='/schedule/edit/:id' element={<EditSchedule />} />
+            </Routes>
+          </div>
         </div>
-    );
+      )}
+    </div>
+  );
 };
 export default Admin;

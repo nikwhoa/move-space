@@ -55,7 +55,7 @@ const Header = () => {
                         <div
                             className={`site-logo${showMenu ? ' hidden' : ''}`}
                         >
-                            <Link to='/'>Move.Space</Link>
+                            <Link to='/'>MOV.space</Link>
                         </div>
                         <div
                             className={`ml-auto${
