@@ -18,6 +18,25 @@ const scheduleSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    seats: {
+      available: {
+        type: Number,
+        required: true,
+        default: 20,
+      },
+      reserved: {
+        type: Number,
+        required: true,
+        default: 0,
+      },
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+    classes: {
+      type: Array,
+    },
     users: {
       type: Array,
     },
