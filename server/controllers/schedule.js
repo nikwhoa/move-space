@@ -11,10 +11,13 @@ const update = async (user, schedule) => {
 };
 
 export const createSchedule = async (req, res) => {
-  const { scheduleItem, TrainTime, trainer, trainDay } = req.body;
+  const { scheduleItem, TrainTime, trainer, trainDay, seats, price, classes } = req.body;
   try {
     const newSchedule = new Schedule({
       scheduleItem,
+      seats,
+      price,
+      classes,
       TrainTime,
       trainer,
       trainDay,
